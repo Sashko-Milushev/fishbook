@@ -1,0 +1,15 @@
+@import 'home.css';
+@import 'login.css';
+@import '404.css';
+@import 'profileFunctions.css';
+@import 'petFunctions.css';
+@import 'photoDetails.css';
+@import 'profile.css';
+@import 'petProfile.css';
+
+.accounts {
+     background: url("/staticfiles/images/background_pic_accounts.jpg") 50% 0 no-repeat fixed;
+     color: white;
+     height: 650px;
+     padding: 100px 0 0 0;
+     }
