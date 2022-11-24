@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+    <div class="bg">
+        <h1 id="acc-message">{{ profile.username }}</h1>
+        <h1 id="acc-message">{{ profile.user.email }}</h1>
+
+        <h1 id="acc-message">{{ profile.fishing_style }}</h1>
+        <h1 id="acc-message">{{ profile.profile_type }}</h1>
+    <div>
+        <img class="profile-pic" src="{{ profile.profile_picture.url }}" alt="image of {{ profile.username }}">
+    </div>
+    </div>
+
+{% endblock %}

@@ -83,3 +83,20 @@ def add_profile(request):
     }
     return render(request, 'accounts/create-profile-page.html', context)
 
+
+def get_profile_by_id(pk):
+    return Profile.objects.filter(pk=pk).get()
+
+
+def get_email_by_id(pk):
+    return UserModel.objects.filter(pk=pk).get()
+
+
+def details_profile(request, pk):
+    profile = get_profile_by_id(pk)
+
+    context = {
+        'profile': profile,
+    }
+
+    return render(request, 'accounts/details-profile-page.html', context)
