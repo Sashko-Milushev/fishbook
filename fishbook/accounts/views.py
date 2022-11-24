@@ -1,10 +1,12 @@
-from django.shortcuts import render
-from django.contrib.auth import views as auth_view
+from django.shortcuts import render, redirect
+from django.contrib.auth import views as auth_view, login, get_user_model
 from django.urls import reverse_lazy
 from django.views import generic as views
 
+from fishbook.accounts.forms import SignUpForm, ProfileCreateForm
+from fishbook.accounts.models import Profile
 
-from fishbook.accounts.forms import SignUpForm
+UserModel = get_user_model()
 
 
 class SignInView(auth_view.LoginView):
@@ -21,8 +23,63 @@ class SignInView(auth_view.LoginView):
 class SignUpView(views.CreateView):
     template_name = 'accounts/register-page.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('login user')
+    success_url = reverse_lazy('home')
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        login(request, self.object)
+
+        return response
 
 
 class SignOutView(auth_view.LogoutView):
     next_page = reverse_lazy('home')
+
+
+class UserEditView(views.UpdateView):
+    template_name = 'accounts/edit-user-page.html'
+    model = UserModel
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={
+            'pk': self.request.user.pk,
+        })
+
+
+class UserDeleteView(views.DeleteView):
+    template_name = 'accounts/delete-user-page.html'
+    model = UserModel
+    success_url = reverse_lazy('home')
+
+
+class UserDetailsView(views.DetailView):
+    template_name = 'accounts/details-user-page.html'
+    model = UserModel
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['is_owner'] = self.request.user == self.object
+
+        return context
+
+
+def add_profile(request):
+    if request.method == 'GET':
+        form = ProfileCreateForm()
+    else:
+        form = ProfileCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            form.save()
+
+            return redirect('home')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/create-profile-page.html', context)
+

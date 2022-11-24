@@ -7,6 +7,7 @@ from multiselectfield import MultiSelectField
 
 from fishbook.accounts.managers import AppUserManager
 from fishbook.accounts.validators import validate_image
+from fishbook.core.model_mixins import StrFromFieldMixin
 from fishbook.fishing_styles.fishing_styles import FISHING_STYLES, FISHING_STYLES_MAX_LENGTH, FISHING_STYLES_MAX_CHOICES
 
 
@@ -43,7 +44,8 @@ class ProfileType(ChoicesEnumMixin, Enum):
     lake_owner = 'Lake owner'
 
 
-class Profile(models.Model):
+class Profile(StrFromFieldMixin, models.Model):
+    str_fields = ('profile_picture',)
     USERNAME_MAX_LENGTH = 30
     USERNAME_MIN_LENGTH = 2
 

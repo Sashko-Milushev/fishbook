@@ -1,49 +1,34 @@
 {% load static %}
-<nav class="navbar">
-    <div class="container">
-        <div class="logo">
-            <a href="{% url 'home' %}">
-                <img width="130px"
-                     src="{% static 'images/fish-logo2.jpg' %}"
-                     alt="img1">
-            </a>
-            <a class="home" href="{% url 'home' %}">
-                <i>Fishbook</i>
-            </a>
-        </div>
 
-        <div class="nav-links">
-            <ul class="nav-group">
-                <li class="nav-item">
-                    <a href="#">
-                        <i>Map</i>
-                    </a>
-                </li>
-                {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Profile</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'logout user' %}">
-                            <i>Logout</i>
-                        </a>
-                    </li>
-                {% else %}
-                    <li class="nav-item">
-                        <a href="{% url 'register user' %}">
-                            <i>Register</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{% url 'login user' %}">
-                            <i>Login</i>
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
+<nav>
+    <ul>
+        <li>
+            <a href="{% url 'home' %}">Fishbook</a>
+        </li>
+        <li>
+            <a href="#">Map</a>
+        </li>
+        {% if user.is_authenticated %}
+            <li style="float:right" class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Account</a>
+                <div class="dropdown-content">
+                    <a href="{% url 'details user' pk=user.pk %}">Details</a>
+                    <a href="{% url 'logout user' %}">Logout</a>
 
-        </div>
-    </div>
+                </div>
+            </li>
+            <li style="float:right">
+                <a href="{% url 'create profile' %}">Profile</a>
+            </li>
+        {% else %}
+            <li style="float:right">
+                <a href="{% url 'login user' %}">Login</a>
+            </li>
+            <li style="float:right">
+                <a href="{% url 'register user' %}">Register</a>
+            </li>
+        {% endif %}
+
+
+    </ul>
 </nav>

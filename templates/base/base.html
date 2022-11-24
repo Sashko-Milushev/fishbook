@@ -1,10 +1,11 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet"
-          href="{% static 'css/styles.css' %}">
-    <link rel="icon" type="image/x-icon" href="{% static 'images/fish-logo.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 
     <title>Fishbook</title>
 </head>
@@ -13,10 +14,15 @@
     {% include 'base/partials/nav.html' %}
 </header>
 
-<main>
+<main class="main-content">
     {% block page_content %}
     {% endblock %}
 </main>
 
+<footer class="footer">
+    <span>
+		THE SOCIAL NETWORK FOR FISHERMEN © 2022 FISHBOOK 2022 © THE SOCIAL NETWORK FOR FISHERMEN
+    </span>
+</footer>
 </body>
 </html>

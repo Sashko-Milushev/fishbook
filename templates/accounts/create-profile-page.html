@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load placeholders %}
+{% block page_content %}
+
+    <div class="bg">
+        <h1 id="acc-message">Create profile</h1>
+        <form class="profile-form" method="post" action="{% url 'create profile' %}" enctype="multipart/form-data">
+            <p>Username: {{ form.username }}</p>
+            <p>Profile type: {{ form.profile_type }}</p>
+            <p>Upload picture: {{ form.profile_picture }}</p>
+            <p>Choose you styles of fishing: {{ form.fishing_style }}</p>
+            <button type="submit">Create</button>
+            {% csrf_token %}
+
+        </form>
+    </div>
+
+{% endblock %}

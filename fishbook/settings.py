@@ -1,7 +1,11 @@
 from pathlib import Path
+import mimetypes
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
+
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,6 +32,7 @@ INSTALLED_APPS = [
 
     'fishbook.accounts',
     'fishbook.common',
+
 ]
 
 MIDDLEWARE = [

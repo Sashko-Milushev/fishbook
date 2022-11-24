@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 
+from fishbook.accounts.models import Profile
+
 UserModel = get_user_model()
 
 
@@ -12,4 +14,15 @@ class SignUpForm(auth_forms.UserCreationForm):
         field_classes = {'email': auth_forms.UsernameField}
 
 
+class UserEditForm(auth_forms.UserChangeForm):
+    class Meta:
+        model = UserModel
+        fields = '__all__'
+        field_classes = {'email': auth_forms.UsernameField}
+
+
+class ProfileCreateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style')
 

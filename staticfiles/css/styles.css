@@ -1,15 +1,154 @@
-@import 'home.css';
-@import 'login.css';
-@import '404.css';
-@import 'profileFunctions.css';
-@import 'petFunctions.css';
-@import 'photoDetails.css';
-@import 'profile.css';
-@import 'petProfile.css';
+body, html {
+    height: 100%;
+}
 
-.accounts {
-     background: url("/staticfiles/images/background_pic_accounts.jpg") 50% 0 no-repeat fixed;
-     color: white;
-     height: 650px;
-     padding: 100px 0 0 0;
-     }
+.bg {
+    /* The image used */
+    background-image: url("../images/background_pic_accounts.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-content {
+    position: absolute;
+    top: 60px; /* Header Height */
+    bottom: 20px; /* Footer Height */
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: lightcyan;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a, .dropbtn {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: lightskyblue;
+}
+li.dropdown {
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {background-color: lightskyblue;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: lightskyblue;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: skyblue;
+    color: white;
+    text-align: center;
+}
+
+.user-form {
+    width: 15%;
+    padding: 10px 20px;
+    margin-left: 20px;
+
+
+    display: grid;
+    opacity: 0.3;
+
+
+}
+
+input {
+    background-color: lightcyan;
+    padding: 12px 20px;
+    margin: 8px 0;
+    color: black;
+    border-radius: 5px;
+}
+
+button[type=submit] {
+    background-color: lightblue;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+}
+
+#acc-message {
+    margin-left: 60px;
+    padding-top: 30px;
+    color: lightskyblue;
+}
+
+#bottom-acc-message {
+    color: lightskyblue;
+    margin-left: 60px;
+
+}
+#bottom-acc-message a {
+    color: lightskyblue;
+
+}
+.profile {
+
+    padding: 10px 20px;
+    margin-left: 20px;
+
+}
+
+.profile-data {
+    display: flex;
+
+}
+.profile-form {
+    width: 15%;
+    padding: 10px 20px;
+    margin-left: 20px;
+
+    display: grid;
+    opacity: 0.7;
+}
