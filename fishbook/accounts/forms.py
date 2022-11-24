@@ -21,8 +21,15 @@ class UserEditForm(auth_forms.UserChangeForm):
         field_classes = {'email': auth_forms.UsernameField}
 
 
-class ProfileCreateForm(forms.ModelForm):
+class ProfileBaseForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('username', 'profile_type', 'profile_picture', 'fishing_style')
 
+
+class ProfileCreateForm(ProfileBaseForm):
+    pass
+
+
+class ProfileEditForm(ProfileBaseForm):
+    pass

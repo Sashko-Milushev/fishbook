@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_view, login, get_user_model
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from fishbook.accounts.forms import SignUpForm, ProfileCreateForm
+from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm
 from fishbook.accounts.models import Profile
 
 UserModel = get_user_model()
@@ -81,15 +81,11 @@ def add_profile(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/create-profile-page.html', context)
+    return render(request, 'accounts/edit-profile-page.html', context)
 
 
 def get_profile_by_id(pk):
     return Profile.objects.filter(pk=pk).get()
-
-
-def get_email_by_id(pk):
-    return UserModel.objects.filter(pk=pk).get()
 
 
 def details_profile(request, pk):
@@ -100,3 +96,23 @@ def details_profile(request, pk):
     }
 
     return render(request, 'accounts/details-profile-page.html', context)
+
+
+def edit_profile(request, pk):
+    profile = get_profile_by_id(pk)
+    if request.method == 'GET':
+        form = ProfileEditForm(instance=profile)
+    else:
+        form = ProfileEditForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+            form.save()
+
+            return redirect('home')
+    context = {
+        'form': form,
+        'profile': profile,
+    }
+    return render(request, 'accounts/edit-profile-page.html', context)
