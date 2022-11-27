@@ -81,7 +81,7 @@ def add_profile(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/edit-profile-page.html', context)
+    return render(request, 'accounts/create-profile-page.html', context)
 
 
 def get_profile_by_id(pk):

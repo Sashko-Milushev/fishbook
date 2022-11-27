@@ -17,9 +17,15 @@
 
                 </div>
             </li>
+            {% if user.profile %}
+                <li style="float:right">
+                <a href="{% url 'details profile' pk=profile.pk %}">Profile</a>
+            </li>
+                {% else %}
             <li style="float:right">
                 <a href="{% url 'create profile' %}">Profile</a>
             </li>
+                {% endif %}
         {% else %}
             <li style="float:right">
                 <a href="{% url 'login user' %}">Login</a>
