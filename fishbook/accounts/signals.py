@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.dispatch import receiver
 from django.db.models import signals
+from django.urls import reverse_lazy
 
 from fishbook.accounts.models import Profile
 
@@ -14,3 +15,4 @@ def create_profile_on_user_created(instance, created, *args, **kwargs):
     Profile.objects.create(
         user_id=instance.pk,
     )
+

@@ -88,3 +88,8 @@ class Profile(StrFromFieldMixin, models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+    is_completed = models.BooleanField(
+        default=False,
+        blank=True,
+        null=True,
+    )
