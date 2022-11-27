@@ -10,7 +10,7 @@ UserModel = get_user_model()
 
 
 class SignInView(auth_view.LoginView):
-    template_name = 'accounts/login-page.html'
+    template_name = 'accounts/user/login-user-page.html'
     success_url = reverse_lazy('home')
 
     def get_success_url(self):
@@ -21,7 +21,7 @@ class SignInView(auth_view.LoginView):
 
 
 class SignUpView(views.CreateView):
-    template_name = 'accounts/register-page.html'
+    template_name = 'accounts/user/register-user-page.html'
     form_class = SignUpForm
     success_url = reverse_lazy('home')
 
@@ -37,7 +37,7 @@ class SignOutView(auth_view.LogoutView):
 
 
 class UserEditView(views.UpdateView):
-    template_name = 'accounts/edit-user-page.html'
+    template_name = 'accounts/user/edit-user-page.html'
     model = UserModel
     fields = '__all__'
 
@@ -48,13 +48,13 @@ class UserEditView(views.UpdateView):
 
 
 class UserDeleteView(views.DeleteView):
-    template_name = 'accounts/delete-user-page.html'
+    template_name = 'accounts/user/delete-user-page.html'
     model = UserModel
     success_url = reverse_lazy('home')
 
 
 class UserDetailsView(views.DetailView):
-    template_name = 'accounts/details-user-page.html'
+    template_name = 'accounts/user/details-user-page.html'
     model = UserModel
 
     def get_context_data(self, **kwargs):
@@ -81,7 +81,7 @@ def add_profile(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/create-profile-page.html', context)
+    return render(request, 'accounts/profile/create-profile-page.html', context)
 
 
 def get_profile_by_id(pk):
@@ -95,7 +95,7 @@ def details_profile(request, pk):
         'profile': profile,
     }
 
-    return render(request, 'accounts/details-profile-page.html', context)
+    return render(request, 'accounts/profile/details-profile-page.html', context)
 
 
 def edit_profile(request, pk):
@@ -115,4 +115,4 @@ def edit_profile(request, pk):
         'form': form,
         'profile': profile,
     }
-    return render(request, 'accounts/edit-profile-page.html', context)
+    return render(request, 'accounts/profile/edit-profile-page.html', context)

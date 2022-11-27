@@ -51,8 +51,8 @@ class Profile(StrFromFieldMixin, models.Model):
 
     profile_picture = models.ImageField(
         upload_to='profile_pictures/',
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         validators=(
             validate_image,
         ),
@@ -64,23 +64,23 @@ class Profile(StrFromFieldMixin, models.Model):
         validators=(
             validators.MinLengthValidator(USERNAME_MIN_LENGTH),
         ),
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
 
     fishing_style = MultiSelectField(
         choices=FISHING_STYLES,
         max_length=FISHING_STYLES_MAX_LENGTH,
         max_choices=FISHING_STYLES_MAX_CHOICES,
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
 
     profile_type = models.CharField(
         choices=ProfileType.choices(),
         max_length=ProfileType.max_len(),
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
     )
 
     user = models.OneToOneField(
