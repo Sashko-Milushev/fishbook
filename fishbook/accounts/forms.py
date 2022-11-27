@@ -26,7 +26,11 @@ class ProfileBaseForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('username', 'profile_type', 'profile_picture', 'fishing_style')
-        widgets = forms.CheckboxSelectMultiple, choices = FISHING_STYLES
+        widgets = {
+            'fishing_style': forms.MultipleChoiceField(
+                widget=forms.CheckboxSelectMultiple,
+            )
+        }
 
 
 class ProfileCreateForm(ProfileBaseForm):
