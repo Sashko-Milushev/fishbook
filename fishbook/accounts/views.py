@@ -71,10 +71,11 @@ def add_profile(request):
     else:
         form = ProfileCreateForm(request.POST, request.FILES)
         if form.is_valid():
+
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            form.save()
+            form.save_m2m()
 
             return redirect('home')
 

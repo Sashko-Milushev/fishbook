@@ -9,20 +9,24 @@
             <a href="#">Map</a>
         </li>
         {% if user.is_authenticated %}
+
             <li style="float:right" class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">Account</a>
                 <div class="dropdown-content">
                     <a href="{% url 'details user' pk=user.pk %}">Details</a>
                     <a href="{% url 'logout user' %}">Logout</a>
-
                 </div>
-            </li>
-                <li style="float:right">
-                <a href="{% url 'details profile' pk=user.pk %}">Profile</a>
-            </li>
-            <li style="float:right">
-                <a href="{% url 'create profile' %}">Profile</a>
-            </li>
+                {% if user.profile.is_completed %}
+                    </li>
+                    <li style="float:right">
+                        <a href="{% url 'details profile' pk=user.pk %}">Profile</a>
+                    </li>
+                {% else %}
+                    <li style="float:right">
+                        <a href="{% url 'create profile' %}">Profile</a>
+                    </li>
+                {% endif %}
+
         {% else %}
             <li style="float:right">
                 <a href="{% url 'login user' %}">Login</a>
@@ -35,3 +39,4 @@
 
     </ul>
 </nav>
+

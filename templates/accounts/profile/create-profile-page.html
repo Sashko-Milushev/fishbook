@@ -5,10 +5,14 @@
     <div class="bg">
         <h1 id="acc-message">Create profile</h1>
         <form class="profile-form" method="post" action="{% url 'create profile' %}" enctype="multipart/form-data">
-            <p>Username: {{ form.username }}</p>
-            <p>Profile type: {{ form.profile_type }}</p>
-            <p>Upload picture: {{ form.profile_picture }}</p>
-            <p>Choose you styles of fishing: {{ form.fishing_style }}</p>
+            {{ form.username }}
+            {{ form.profile_type }}
+            {{ form.profile_picture }}
+            {% for value, text in form.fishing_style.field.choices %}
+                <input name="{{ form.fishing_style.name }}" type="checkbox" value="{{ value }}"
+                        {% if value in checked_fishing_style %} checked="checked" {% endif %}>
+                <label>{{ text }}</label>
+            {% endfor %}
             <button type="submit">Create</button>
             {% csrf_token %}
 

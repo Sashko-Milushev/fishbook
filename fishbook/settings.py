@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'fishbook.accounts',
     'fishbook.common',
 
-    'multiselectfield'
 
 ]
 
