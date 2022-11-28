@@ -2,11 +2,12 @@
 {% block page_content %}
     <div class="profile bg">
         <div class="profile-data">
-            <h3>User info:</h3>
-            <h4>{{ object.email }}</h4>
+            <h3>User info:   </h3>
+
+            <h4> {{ object.email }}</h4>
             {% if is_owner %}
-            <a href="{% url 'edit user' pk=object.pk %}">Edit</a>
-            <a href="{% url 'delete user' pk=object.pk %}">Delete</a>
+                <a href="{% url 'edit user' pk=object.pk %}">Edit</a>
+                <a href="{% url 'delete user' pk=object.pk %}">Delete</a>
             {% endif %}
         </div>
 

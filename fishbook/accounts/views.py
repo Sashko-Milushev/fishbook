@@ -47,10 +47,17 @@ class UserEditView(views.UpdateView):
         })
 
 
+class UserPasswordChangeView(auth_view.PasswordChangeView):
+    template_name = 'accounts/user/password-change-page.html'
+    model = UserModel
+    success_url = reverse_lazy('home')
+
+
 class UserDeleteView(views.DeleteView):
     template_name = 'accounts/user/delete-user-page.html'
     model = UserModel
     success_url = reverse_lazy('home')
+
 
 
 class UserDetailsView(views.DetailView):
@@ -71,7 +78,6 @@ def add_profile(request):
     else:
         form = ProfileCreateForm(request.POST, request.FILES)
         if form.is_valid():
-
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()

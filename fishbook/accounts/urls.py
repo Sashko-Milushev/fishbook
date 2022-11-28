@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import path, include
 
 from fishbook.accounts.views import SignUpView, SignOutView, SignInView, UserEditView, UserDeleteView, UserDetailsView, \
-    add_profile, details_profile, edit_profile
+    add_profile, details_profile, edit_profile, UserPasswordChangeView
 
 urlpatterns = [
     path('login/', SignInView.as_view(), name='login user'),
@@ -13,6 +13,7 @@ urlpatterns = [
         path('', UserDetailsView.as_view(), name='details user'),
         path('edit/', UserEditView.as_view(), name='edit user'),
         path('delete/', UserDeleteView.as_view(), name='delete user'),
+        path('password-change/', UserPasswordChangeView.as_view(), name='change password')
     ])),
     path('profile/', include([
         path('create/', add_profile, name='create profile'),

@@ -1,4 +1,7 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <h1>edit user</h1>
+    <div class="bg">
+        <h1 id="acc-message">Edit account</h1>
+        <a href="{% url 'change password' pk=user.pk %}">Change password</a>
+    </div>
 {% endblock %}
