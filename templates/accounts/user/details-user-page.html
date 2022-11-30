@@ -1,15 +1,21 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
     <div class="profile bg">
-        <div class="profile-data">
-            <h3>User info:   </h3>
+        <h1>Profile info : {{ object.email }}</h1>
+        {% if is_owner %}
+            <form class="profile-form" action="{% url 'edit user' pk=user.pk %}">
+                <input style="cursor: pointer" type="submit" value="Edit"/>
+            </form>
+            <form class="profile-form" action="{% url 'delete user' pk=user.pk %}">
+                <input style="cursor: pointer" type="submit" value="Delete"/>
+            </form>
+            {#            <a style="color: lightskyblue; margin: 10px 10px 10px 10px; font-size: 25px"#}
+            {#               href="{% url 'edit user' pk=object.pk %}">Edit</a>#}
 
-            <h4> {{ object.email }}</h4>
-            {% if is_owner %}
-                <a href="{% url 'edit user' pk=object.pk %}">Edit</a>
-                <a href="{% url 'delete user' pk=object.pk %}">Delete</a>
-            {% endif %}
-        </div>
+            {#            <a style="color: lightskyblue;margin: 10px 10px 10px 10px; font-size: 25px;"#}
+            {#               href="{% url 'delete user' pk=object.pk %}">Delete</a>#}
+        {% endif %}
 
     </div>
+
 {% endblock %}

@@ -14,6 +14,7 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .profile-pic {
     margin: 10px;
     width: 150px;
@@ -50,37 +51,45 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-li a, .dropbtn {
-  display: inline-block;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+
+li a .dropbtn {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
+
 li a:hover, .dropdown:hover .dropbtn {
-  background-color: lightskyblue;
+    background-color: lightskyblue;
 }
+
 li.dropdown {
-  display: inline-block;
+    display: inline-block;
 }
+
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
+
 .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
 }
-.dropdown-content a:hover {background-color: lightskyblue;}
+
+.dropdown-content a:hover {
+    background-color: lightskyblue;
+}
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 
@@ -124,6 +133,14 @@ button[type=submit] {
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 5px;
+    cursor: pointer;
+}
+input[type=submit] {
+    background-color: lightblue;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #acc-message {
@@ -137,10 +154,12 @@ button[type=submit] {
     margin-left: 60px;
 
 }
+
 #bottom-acc-message a {
     color: lightskyblue;
 
 }
+
 .profile {
 
     padding: 10px 20px;
@@ -152,6 +171,7 @@ button[type=submit] {
     display: flex;
 
 }
+
 .profile-form {
     width: 15%;
     padding: 10px 20px;

@@ -6,7 +6,7 @@
         <h1 id="acc-message">Create profile</h1>
         <form class="profile-form" method="post" action="{% url 'create profile' %}" enctype="multipart/form-data">
             {{ form }}
-            <button type="submit">Create</button>
+            <button style="cursor: pointer" type="submit">Create</button>
             {% csrf_token %}
 
         </form>

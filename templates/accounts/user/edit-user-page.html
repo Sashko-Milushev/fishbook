@@ -2,6 +2,7 @@
 {% block page_content %}
     <div class="bg">
         <h1 id="acc-message">Edit account</h1>
-        <a href="{% url 'change password' pk=user.pk %}">Change password</a>
+        <a style="color: lightskyblue; margin-left: 60px; font-size: 25px"
+           href="{% url 'change password' pk=user.pk %}">Change password</a>
     </div>
 {% endblock %}
