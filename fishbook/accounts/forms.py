@@ -12,14 +12,14 @@ class SignUpForm(auth_forms.UserCreationForm):
         model = UserModel
         fields = (UserModel.USERNAME_FIELD,)
         # TODO: check if 'field_classes' is correct
-        field_classes = {'email': auth_forms.UsernameField}
+        # field_classes = {'email': auth_forms.UsernameField}
 
 
 class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
         fields = '__all__'
-        field_classes = {'email': auth_forms.UsernameField}
+        # field_classes = {'email': auth_forms.UsernameField}
 
 
 class ProfileBaseForm(forms.ModelForm):
