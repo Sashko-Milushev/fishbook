@@ -59,7 +59,6 @@ class UserDeleteView(views.DeleteView):
     success_url = reverse_lazy('home')
 
 
-
 class UserDetailsView(views.DetailView):
     template_name = 'accounts/user/details-user-page.html'
     model = UserModel

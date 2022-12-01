@@ -2,14 +2,20 @@
 {% block page_content %}
 
     <div class="bg">
-        <h1 id="acc-message">{{ profile.username }}</h1>
-        <h1 id="acc-message">{{ profile.user.email }}</h1>
-
-        <h1 id="acc-message">{{ profile.fishing_style }}</h1>
-        <h1 id="acc-message">{{ profile.profile_type }}</h1>
-    <div>
-        <img class="profile-pic" src="{{ profile.profile_picture.url }}" alt="image of {{ profile.username }}">
-    </div>
+        <div style="
+        background: lightskyblue;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px; :hover{box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);} ">
+            <img src="{{ profile.profile_picture.url }}" alt="profile picture of {{ profile.username }}"
+                 style="width:50%">
+            <div style="padding: 2px 16px;">
+                <h4><b>{{ profile.username }}</b></h4>
+                <p>{{ profile.profile_type }}</p>
+                <p>Favourite fishing: {{ profile.fishing_style }}</p>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
