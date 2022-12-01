@@ -135,6 +135,7 @@ button[type=submit] {
     border-radius: 5px;
     cursor: pointer;
 }
+
 input[type=submit] {
     background-color: lightblue;
     padding: 12px 20px;
@@ -180,3 +181,4 @@ input[type=submit] {
     display: grid;
     opacity: 0.7;
 }
+
