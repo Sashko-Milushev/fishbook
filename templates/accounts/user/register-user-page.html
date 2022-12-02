@@ -1,20 +1,13 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% load placeholders %}
 {% block page_content %}
-
-    <div class="bg">
-        <h1 id="acc-message">Registration</h1>
-        <form class="user-form" method="post" action="{% url 'register user' %}">
-                {{ form.email|placeholder:'Email: ' }}
-                {{ form.password1|placeholder:'Password: ' }}
-                {{ form.password2|placeholder:'Repeat password: ' }}
-                <button type="submit">Register</button>
-                {% csrf_token %}
-            </form>
+    <h1 id="acc-message">Registration</h1>
+    <form class="user-form" method="post" action="{% url 'register user' %}">
+        {{ form.email|placeholder:'Email: ' }}
+        {{ form.password1|placeholder:'Password: ' }}
+        {{ form.password2|placeholder:'Repeat password: ' }}
+        <button type="submit">Register</button>
+        {% csrf_token %}
+    </form>
     <p id="bottom-acc-message">Already registrated? <a href="{% url 'login user' %}">Login</a></p>
-
-
-
-    </div>
-
 {% endblock %}

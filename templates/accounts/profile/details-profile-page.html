@@ -1,4 +1,4 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% block page_content %}
 
     {#    <div class="bg">#}
@@ -17,7 +17,6 @@
     {#            </div>#}
     {#        </div>#}
     {#    </div>#}
-    <div class="bg">
         <div class="profile-card">
             <div class="card">
                 <img src="{{ profile.profile_picture.url }}" alt="profile picture of {{ profile.username }}">
@@ -28,7 +27,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 
 {% endblock %}

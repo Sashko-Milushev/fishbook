@@ -1,10 +1,11 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% load placeholders %}
 {% block page_content %}
 
-    <div class="bg">
+    <div>
         <h1 id="acc-message">Edit profile</h1>
-        <form class="profile-form" method="post" action="{% url 'edit profile' pk=profile.pk %}" enctype="multipart/form-data">
+        <form class="profile-form" method="post" action="{% url 'edit profile' pk=profile.pk %}"
+              enctype="multipart/form-data">
             <p>Username: {{ form.username }}</p>
             <p>Profile type: {{ form.profile_type }}</p>
             <p>Upload picture: {{ form.profile_picture }}</p>

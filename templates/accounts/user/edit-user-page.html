@@ -1,9 +1,17 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
+{% load placeholders %}
 {% block page_content %}
-    <div class="bg">
-        <h1 id="acc-message">Edit account</h1>
-        <form class="profile-form" action="{% url 'change password' pk=user.pk %}">
-                <input style="cursor: pointer" type="submit" value="Change password"/>
-        </form>
+    <div>
+        {% if is_owner %}
+            <h1 id="acc-message">Edit account</h1>
+            <form class="profile-form" action="{% url 'edit user' pk=object.pk %}" method="post">
+                {{ form.email }}
+                <input style="cursor: pointer" type="submit" value="Edit"/>
+                {% csrf_token %}
+            </form>
+        {% else %}
+            <h1>This is not your account to edit! Please, go to your<a href="{% url 'details user' pk=user_pk %}">
+                account...</a></h1>
+        {% endif %}
     </div>
 {% endblock %}

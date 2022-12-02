@@ -13,7 +13,7 @@ urlpatterns = [
         path('', UserDetailsView.as_view(), name='details user'),
         path('edit/', UserEditView.as_view(), name='edit user'),
         path('delete/', UserDeleteView.as_view(), name='delete user'),
-        path('password-change/', UserPasswordChangeView.as_view(), name='change password')
+        path('password-change/', UserPasswordChangeView.as_view(), name='change password'),
     ])),
     path('profile/', include([
         path('create/', add_profile, name='create profile'),

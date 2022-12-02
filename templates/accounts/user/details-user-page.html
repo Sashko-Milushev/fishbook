@@ -1,10 +1,13 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% block page_content %}
-    <div class="profile bg">
+    <div class="profile">
         <h1>Profile info : {{ object.email }}</h1>
         {% if is_owner %}
             <form class="profile-form" action="{% url 'edit user' pk=user.pk %}">
-                <input style="cursor: pointer" type="submit" value="Edit"/>
+                <input style="cursor: pointer" type="submit" value="Edit email"/>
+            </form>
+            <form class="profile-form" action="{% url 'change password' pk=user.pk %}">
+                <input style="cursor: pointer" type="submit" value="Edit password"/>
             </form>
             <form class="profile-form" action="{% url 'delete user' pk=user.pk %}">
                 <input style="cursor: pointer" type="submit" value="Delete"/>

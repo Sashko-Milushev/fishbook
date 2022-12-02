@@ -18,8 +18,8 @@ class SignUpForm(auth_forms.UserCreationForm):
 class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
-        fields = '__all__'
-        # field_classes = {'email': auth_forms.UsernameField}
+        fields = (UserModel.USERNAME_FIELD,)
+        field_classes = {'email': auth_forms.UsernameField}
 
 
 class ProfileBaseForm(forms.ModelForm):
@@ -34,3 +34,8 @@ class ProfileCreateForm(ProfileBaseForm):
 
 class ProfileEditForm(ProfileBaseForm):
     pass
+
+
+class PasswordChangeForm(auth_forms.PasswordChangeForm):
+    class Meta:
+        model = UserModel

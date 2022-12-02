@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_view, login, get_user_model
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm
+from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm
 from fishbook.accounts.models import Profile
 
 UserModel = get_user_model()
@@ -40,7 +40,15 @@ class SignOutView(auth_view.LogoutView):
 class UserEditView(views.UpdateView):
     template_name = 'accounts/user/edit-user-page.html'
     model = UserModel
-    fields = '__all__'
+    form_class = UserEditForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['is_owner'] = self.request.user == self.object
+        context['user_pk'] = self.request.user.pk
+
+        return context
 
     def get_success_url(self):
         return reverse_lazy('details user', kwargs={
@@ -48,10 +56,14 @@ class UserEditView(views.UpdateView):
         })
 
 
-class UserPasswordChangeView(auth_view.PasswordChangeView):
-    template_name = 'accounts/user/password-change-page.html'
-    model = UserModel
-    success_url = reverse_lazy('home')
+def change_password(request):
+    if request.method == "GET":
+        form =
+
+
+
+class PasswordChangeSuccessful(auth_view.PasswordChangeDoneView):
+    template_name = 'accounts/user/password-change-done-page.html'
 
 
 class UserDeleteView(views.DeleteView):

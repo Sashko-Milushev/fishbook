@@ -1,7 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% block page_content %}
-    <div class="bg">
-        <h1 style="color: darkred; padding-top: 10px; padding-left: 10px">Are you sure you want to delete your account?</h1>
+    <div>
+        <h1 style="color: darkred; padding-top: 10px; padding-left: 10px">Are you sure you want to delete your
+            account?</h1>
         <form class="profile-form" method="post" action="{% url 'delete user' pk=request.user.pk %}">
             <input style="cursor: pointer" type="submit" value="YES"/>
             {% csrf_token %}

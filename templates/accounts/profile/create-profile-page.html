@@ -1,8 +1,8 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base-auth.html' %}
 {% load placeholders %}
 {% block page_content %}
 
-    <div class="bg">
+    <div>
         <h1 id="acc-message">Create profile</h1>
         <form class="profile-form" method="post" action="{% url 'create profile' %}" enctype="multipart/form-data">
             {{ form }}
