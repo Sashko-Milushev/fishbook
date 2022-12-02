@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_view, login, get_user_model
 from django.urls import reverse_lazy
@@ -71,6 +72,7 @@ class UserDetailsView(views.DetailView):
         return context
 
 
+@login_required
 def add_profile(request):
     if request.method == 'GET':
         form = ProfileCreateForm()

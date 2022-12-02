@@ -10,7 +10,10 @@ UserModel = get_user_model()
 class AppUserAdmin(auth_admin.UserAdmin):
     ordering = ('id',)
     list_display = ['id', 'email', 'last_login', ]
-    list_filter = ()
+    list_display_links = ('id', 'email',)
+    search_fields = ['email', 'id']
+    search_help_text = 'Search by email or user ID'
+    list_filter = ('is_staff', 'email', 'last_login')
     form = UserEditForm
     add_form = SignUpForm
     fieldsets = (
@@ -29,7 +32,7 @@ class AppUserAdmin(auth_admin.UserAdmin):
         (
             None,
             {
-                "fields": ("email", "password1", "password2"),
+                "fields": ("email", "password1", "password2", 'is_staff', 'is_superuser', 'user_permissions', 'groups'),
             },
         ),
     )
