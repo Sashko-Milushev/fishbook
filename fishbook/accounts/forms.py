@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
+from django.core.exceptions import ValidationError
 from django.forms import CheckboxSelectMultiple
 
 from fishbook.accounts.models import Profile
@@ -10,16 +11,19 @@ UserModel = get_user_model()
 class SignUpForm(auth_forms.UserCreationForm):
     class Meta:
         model = UserModel
-        fields = (UserModel.USERNAME_FIELD,)
-        # TODO: check if 'field_classes' is correct
-        # field_classes = {'email': auth_forms.UsernameField}
+        fields = (UserModel.USERNAME_FIELD, 'password1', 'password2',)
+        field_classes = {
+            'email': auth_forms.UsernameField,
+        }
 
 
 class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
         fields = (UserModel.USERNAME_FIELD,)
-        field_classes = {'email': auth_forms.UsernameField}
+        field_classes = {
+            'email': auth_forms.UsernameField,
+        }
 
 
 class ProfileBaseForm(forms.ModelForm):

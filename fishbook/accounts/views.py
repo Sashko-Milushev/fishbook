@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.contrib.auth import views as auth_view, login, get_user_model
+from django.contrib.auth import views as auth_view, login, get_user_model, update_session_auth_hash
 from django.urls import reverse_lazy
 from django.views import generic as views
+from django.http import HttpResponseRedirect
 
-from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm
-from fishbook.accounts.models import Profile
+from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
+from fishbook.accounts.models import Profile, AppUser
 
 UserModel = get_user_model()
 
@@ -26,11 +27,10 @@ class SignUpView(views.CreateView):
     form_class = SignUpForm
     success_url = reverse_lazy('home')
 
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        login(request, self.object)
-
-        return response
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        login(self.request, self.object)
+        return result
 
 
 class SignOutView(auth_view.LogoutView):
@@ -56,13 +56,26 @@ class UserEditView(views.UpdateView):
         })
 
 
-def change_password(request):
+def change_password(request, pk):
+    user = get_user_by_id(pk)
     if request.method == "GET":
-        form =
+        form = PasswordChangeForm(user=request.user)
+    else:
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('change password done')
+    context = {
+        'form': form,
+        'user': user,
+
+    }
+
+    return render(request, 'accounts/user/password-change-page.html', context)
 
 
-
-class PasswordChangeSuccessful(auth_view.PasswordChangeDoneView):
+class PasswordChangeSuccessful(views.TemplateView):
     template_name = 'accounts/user/password-change-done-page.html'
 
 
@@ -102,6 +115,10 @@ def add_profile(request):
         'form': form,
     }
     return render(request, 'accounts/profile/create-profile-page.html', context)
+
+
+def get_user_by_id(pk):
+    return AppUser.objects.filter(pk=pk).get()
 
 
 def get_profile_by_id(pk):

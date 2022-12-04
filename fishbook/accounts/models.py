@@ -1,4 +1,5 @@
 from enum import Enum
+
 from django.core import validators
 from django.db import models
 from django.contrib.auth import models as auth_models
@@ -14,6 +15,7 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         blank=False,
         null=False,
     )
+
 
     is_staff = models.BooleanField(
         default=False,
