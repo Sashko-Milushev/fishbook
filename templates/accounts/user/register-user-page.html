@@ -3,9 +3,13 @@
 {% block page_content %}
     <h1 id="acc-message">Registration</h1>
     <form class="user-form" method="post" action="{% url 'register user' %}">
-        {{ form.email|placeholder:'Email: ' }}
-        {{ form.password1|placeholder:'Password: ' }}
-        {{ form.password2|placeholder:'Repeat password: ' }}
+        {% for field in form %}
+            <p> {{ field.errors }}</p>
+            {{ field }}
+{#            {{ form.email|placeholder:'Email: ' }}#}
+{#            {{ form.password1|placeholder:'Password: ' }}#}
+{#            {{ form.password2|placeholder:'Repeat password: ' }}#}
+        {% endfor %}
         <button type="submit">Register</button>
         {% csrf_token %}
     </form>
