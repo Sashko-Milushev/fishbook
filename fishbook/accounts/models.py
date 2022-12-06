@@ -6,7 +6,7 @@ from django.contrib.auth import models as auth_models
 
 from fishbook.accounts.managers import AppUserManager
 from fishbook.accounts.validators import validate_image
-from fishbook.core.model_mixins import StrFromFieldMixin
+from fishbook.core.model_mixins import StrFromFieldMixin, ChoicesEnumMixin
 
 
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -15,7 +15,6 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         blank=False,
         null=False,
     )
-
 
     is_staff = models.BooleanField(
         default=False,
@@ -26,16 +25,6 @@ class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     USERNAME_FIELD = 'email'
 
     objects = AppUserManager()
-
-
-class ChoicesEnumMixin:
-    @classmethod
-    def choices(cls):
-        return [(x.name, x.value) for x in cls]
-
-    @classmethod
-    def max_len(cls):
-        return max(len(name) for name, _ in cls.choices())
 
 
 class ProfileType(ChoicesEnumMixin, Enum):
