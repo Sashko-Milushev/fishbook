@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect
 
 from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
 from fishbook.accounts.models import Profile, AppUser
+from services.ses import SESService
+from services.sqs import SQSService
 
 UserModel = get_user_model()
 
@@ -26,6 +28,13 @@ class SignUpView(views.CreateView):
     template_name = 'accounts/user/register-user-page.html'
     form_class = SignUpForm
     success_url = reverse_lazy('home')
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        user = self.object
+        user.save()
+        # SQSService().send_message(user.email)
+        return response
 
     def form_valid(self, form):
         result = super().form_valid(form)

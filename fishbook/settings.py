@@ -32,6 +32,7 @@ INSTALLED_APPS = [
 
     'fishbook.accounts',
     'fishbook.common',
+    'fishbook.fish',
 
 
 ]
