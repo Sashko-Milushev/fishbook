@@ -4,7 +4,7 @@
         <div class="fish-card">
             <img class="fish-img" src="{{ fish.fish_picture }}" alt="image of {{ fish.name }}" style="width:100%">
             <h1>{{ fish.name }}</h1>
-            <p class="fish-type">{{ fish.type }} fish</p>
+            <p class="fish-type">{{ fish.type| capfirst }} fish</p>
             <form action="{% url 'fish details' pk=fish.pk %}">
                 <input type="submit" value="See details"/>
             </form>
