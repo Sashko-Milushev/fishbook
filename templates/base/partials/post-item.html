@@ -6,7 +6,7 @@
                 <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
             </div>
         </a>
-        <h3>
+        <h3 class="userName">
             <a href="{% url 'details profile' pk=photo.user.id %}">
                 {{ photo.user.profile.username }}
             </a>

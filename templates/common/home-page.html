@@ -8,7 +8,7 @@
                         <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
                     </div>
                 </a>
-                <h3>
+                <h4 class="userName">
                     <a href="{% url 'details profile' pk=photo.user.id %}">
                         {{ photo.user.profile.username }}
                     </a>
@@ -16,7 +16,7 @@
                     {% if photo.location %}
                         <span>{{ photo.location }}</span>
                     {% endif %}
-                </h3>
+                </h4>
             </div>
             <div class="imgBox">
                 <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
@@ -26,6 +26,15 @@
             {% endfor %}
 
             <h5 class="postTime">{{ photo.publication_date }}</h5>
+        {% if photo.user == request.user %}
+        <h5 class="postTime">
+            <a href="{% url 'edit photo' pk=photo.pk %}">edit photo</a>
+        </h5>
+        {% else %}
+        <h5 class="postTime">
+            <a href="{% url 'details photo' pk=photo.pk %}">see details</a>
+        </h5>
+        {% endif %}
         </div>
     {% endfor %}
 {% endblock %}

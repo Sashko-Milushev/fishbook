@@ -42,3 +42,7 @@
     font-size: 12px;
     text-transform: uppercase;
 }
+.userName a{
+    text-decoration: none;
+    color: black;
+}

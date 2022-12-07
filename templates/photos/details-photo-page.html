@@ -1,0 +1,8 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    <div class="photoDetails">
+        <div class="imgBox">
+            <img src="{{ photo.photo.url }}" alt="{{ photo.user }}'s photo">
+        </div>
+    </div>
+{% endblock %}
