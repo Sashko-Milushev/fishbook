@@ -1,6 +1,31 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
     {% for photo in photos %}
-        {% include 'base/partials/post-item.html' %}
+        <div class="post">
+            <div class="userDetails">
+                <a href="{% url 'details profile' pk=photo.user.id %}">
+                    <div class="profileImg">
+                        <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
+                    </div>
+                </a>
+                <h3>
+                    <a href="{% url 'details profile' pk=photo.user.id %}">
+                        {{ photo.user.profile.username }}
+                    </a>
+                    <br>
+                    {% if photo.location %}
+                        <span>{{ photo.location }}</span>
+                    {% endif %}
+                </h3>
+            </div>
+            <div class="imgBox">
+                <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
+            </div>
+            {% for fish in photo.tagged_fish.all %}
+                <p class="fish-type"># {{ fish.name }}</p>
+            {% endfor %}
+
+            <h5 class="postTime">{{ photo.publication_date }}</h5>
+        </div>
     {% endfor %}
 {% endblock %}

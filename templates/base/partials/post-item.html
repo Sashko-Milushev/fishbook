@@ -1,13 +1,13 @@
 {% load static %}
 <div class="post">
     <div class="userDetails">
-        <a href="#">
+        <a href="{% url 'details profile' pk=photo.user.id %}">
             <div class="profileImg">
                 <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
             </div>
         </a>
         <h3>
-            <a href="#">
+            <a href="{% url 'details profile' pk=photo.user.id %}">
                 {{ photo.user.profile.username }}
             </a>
             <br>
@@ -20,10 +20,8 @@
         <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
     </div>
     {% for fish in photo.tagged_fish.all %}
-        <p class="fish-type">{{ fish.name }}</p>
+        <p class="fish-type"># {{ fish.name }}</p>
     {% endfor %}
-    <a href="#">
-        <h4>See details</h4>
-    </a>
-    <h5>{{ photo.publiation_date }}</h5>
+
+    <h5 class="postTime">{{ photo.publication_date }}</h5>
 </div>

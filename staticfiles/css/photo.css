@@ -34,3 +34,11 @@
     display: flex;
     align-items: center;
 }
+.postTime {
+    margin-top: 8px;
+    font-weight: lighter;
+    cursor: default;
+    color: rgb(163, 163, 163);
+    font-size: 12px;
+    text-transform: uppercase;
+}
