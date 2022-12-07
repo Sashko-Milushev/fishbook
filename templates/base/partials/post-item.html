@@ -1,6 +1,29 @@
 {% load static %}
-<div class="card">
-    <div class="image">
-        <img src="{% static 'images/fish-logo3.jpg' %}" alt="img8">
+<div class="post">
+    <div class="userDetails">
+        <a href="#">
+            <div class="profileImg">
+                <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
+            </div>
+        </a>
+        <h3>
+            <a href="#">
+                {{ photo.user.profile.username }}
+            </a>
+            <br>
+            {% if photo.location %}
+            <span>{{ photo.location }}</span>
+            {% endif %}
+        </h3>
     </div>
+    <div class="imgBox">
+        <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
+    </div>
+    {% for fish in photo.tagged_fish.all %}
+        <p class="fish-type">{{ fish.name }}</p>
+    {% endfor %}
+    <a href="#">
+        <h4>See details</h4>
+    </a>
+    <h5>{{ photo.publiation_date }}</h5>
 </div>

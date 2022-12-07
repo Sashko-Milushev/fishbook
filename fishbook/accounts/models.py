@@ -41,7 +41,7 @@ class FavouriteFishingStyle(ChoicesEnumMixin, Enum):
     ice_fishing = 'Ice fishing'
     trolling_fishing = 'Trolling fishing'
     salt_water_fishing = 'Salt water fishing'
-    spear_fishing = 'Spear_fishing'
+    spear_fishing = 'Spear fishing'
 
 
 class Profile(StrFromFieldMixin, models.Model):

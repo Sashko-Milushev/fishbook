@@ -1,4 +1,6 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    {% include 'base/partials/post-item.html' %}
+    {% for photo in photos %}
+        {% include 'base/partials/post-item.html' %}
+    {% endfor %}
 {% endblock %}

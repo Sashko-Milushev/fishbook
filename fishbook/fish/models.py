@@ -62,3 +62,4 @@ class Fish(StrFromFieldMixin, models.Model):
 
     class Meta:
         verbose_name_plural = 'Fish'
+        ordering = ('name',)
