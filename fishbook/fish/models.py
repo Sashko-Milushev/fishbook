@@ -20,7 +20,7 @@ class Fish(StrFromFieldMixin, models.Model):
     MIN_LENGTH_NAME = 2
 
     MIN_DESCRIPTION_LENGTH = 10
-    MAX_DESCRIPTION_LENGTH = 300
+    MAX_DESCRIPTION_LENGTH = 1300
 
     name = models.CharField(
         max_length=MAX_LENGTH_NAME,

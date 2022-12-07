@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+    <div class="wrapper">
+        <div class="fish-details">
+            <img class="fish-details-img" src="{{ fish.fish_picture }}" alt="image of {{ fish.name }}"
+                 style="width:100%">
+            <h1>{{ fish.name }}</h1>
+            <p class="fish-type">{{ fish.type }} fish</p>
+            <form action="{% url 'fish catalogue' %}">
+                <input type="submit" value="Back to all"/>
+            </form>
+        </div>
+        <div class="description">
+            <p>{{ fish.description }}</p>
+        </div>
+
+    </div>
+
+{% endblock %}
