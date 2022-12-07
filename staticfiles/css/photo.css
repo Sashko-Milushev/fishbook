@@ -1,0 +1,36 @@
+.imgBox {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    margin: 1px 0 15px;
+}
+.imgBox img {
+    width:590px;
+    height: 410px;
+}
+
+.post {
+    margin: 2% 30%;
+    position: relative;
+    width: 40%;
+    height: 600px;
+    display: inline-block;
+    border: 1px solid rgba(7, 7, 7, 0.24);
+    flex-basis: 100%;
+}
+
+.profileImg img {
+    width: 55px;
+    height: 55px;
+    margin-top: 2px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post .userDetails {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
