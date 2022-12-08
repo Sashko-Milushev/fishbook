@@ -1,8 +1,39 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <div class="photoDetails">
-        <div class="imgBox">
+
+    <div class="photoDetails parent">
+        <div class="imgBox child">
             <img src="{{ photo.photo.url }}" alt="{{ photo.user }}'s photo">
         </div>
+        <div class="photoInfo child">
+                <p>Description of owner:</p>
+                <p>{{ photo.description }}</p>
+                <br>
+                <p>Caught by {{ photo.user.profile.username }} at {{ photo.location }}.</p>
+                <p>Photo is uploaded at {{ photo.publication_date }}</p>
+                {% if photo.tagged_fish %}
+                <p>Fish tagged in the photo:</p>
+                {% for fish in photo.tagged_fish.all %}
+                    <p>Tagged fish: {{ fish }}</p>
+                {% endfor %}
+                {% else %}
+                    <p>No fish tagged</p>
+                {% endif %}
+        </div>
     </div>
+    <div class="userDetails">
+        <p>Photo owner details:</p>
+        <div class="profilePhoto">
+            <div class="profileImg">
+                <img src="{{ photo.user.profile.profile_picture.url }}" alt="{{ photo.user.profile.username }}">
+            </div>
+            <div class="profileImg">
+                <a href="{% url 'details profile' pk=photo.user.pk %}">{{ photo.user.profile.username }} - Link to
+                    profile</a>
+            </div>
+
+        </div>
+    </div>
+
+
 {% endblock %}

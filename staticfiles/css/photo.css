@@ -87,13 +87,15 @@
     border-top: 1px solid #ddd;
 }
 
-.comments .userDetails .profileImg{
+.comments .userDetails .profileImg {
     display: inline;
 }
-.comments .userDetails a p{
+
+.comments .userDetails a p {
     display: inline-block;
 
 }
+
 .comments .userDetails a {
     text-decoration: none;
 }
@@ -107,7 +109,6 @@
     margin-left: 3px;
     display: inline-block;
 }
-
 
 
 .comment-data {
@@ -183,4 +184,60 @@ textarea {
 
 textarea.text::placeholder {
     color: #777;
+}
+
+.photoDetails {
+    height: 72%;
+    width: 95%;
+    border: solid black;
+}
+
+.photoDetails .imgBox {
+    border: solid black;
+    min-width: 250px;
+    min-height: 250px;
+    max-width: 600px;
+    max-height: 500px;
+    padding: 13px;
+    display: inline-block;
+}
+
+.userDetails {
+    border: solid black;
+    height: 80px;
+    width: 620px;
+    padding-left: 8px;
+}
+
+.userDetails p {
+    margin-top: 2px;
+}
+
+.userDetails .profileImg {
+    display: inline-block;
+}
+
+.userDetails .profileImg img {
+    margin-top: -15px;
+}
+
+.profileImg a {
+    text-decoration: none;
+}
+
+.photoInfo {
+    border: solid black;
+    width: 630px;
+    height: 420px;
+}
+.child {
+    display: inline-block;
+
+}
+.parent {
+    display: inline-flex;
+}
+
+.photoInfo p {
+    margin-left: 3px;
 }
