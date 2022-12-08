@@ -14,8 +14,8 @@
 .post {
     margin: 2% 30%;
     position: relative;
-    width: 40%;
-    height: 600px;
+    width: 44%;
+    height: 650px;
     display: inline-block;
     border: 1px solid rgba(7, 7, 7, 0.24);
     flex-basis: 100%;
@@ -24,25 +24,135 @@
 .profileImg img {
     width: 55px;
     height: 55px;
-    margin-top: 2px;
     border-radius: 50%;
     object-fit: cover;
+    margin-top: -4px;
+    margin-left: 3px;
 }
 
 .post .userDetails {
     width: 100%;
     display: flex;
     align-items: center;
+    margin-top: -4px;
+
 }
 .postTime {
-    margin-top: 8px;
+    margin-top: -12px;
     font-weight: lighter;
     cursor: default;
     color: rgb(163, 163, 163);
     font-size: 12px;
     text-transform: uppercase;
 }
+.postTime a{
+    text-decoration: none;
+}
 .userName a{
     text-decoration: none;
     color: black;
+}
+.actionBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.actionBtn svg {
+    cursor: pointer;
+}
+.actionBtn .left svg {
+    margin-left: 2px;
+    margin-top: -8px;
+}
+
+.likes {
+    font-weight: 500;
+    margin-top: 3px;
+    margin-left: 2px;
+    font-size: 14px;
+    cursor: default;
+    color: #4d4d4f;
+}
+.comments {
+    display: flex;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+}
+.comments .userDetails {
+    display: block; !important;
+}
+.comments h3 {
+    display: flex;
+    word-wrap: break-word;
+    white-space: normal;
+}
+.comment-data {
+    display: flex;
+    font-size: 10px;
+    word-break: break-all;
+    white-space: normal;
+    font-weight: bold;
+    color: rgb(70, 65, 65);
+}
+.fishType {
+    color: grey;
+    font-size: 16px;
+    margin-top: -10px;
+    margin-left: 2px;
+}
+
+.comment-data h3 {
+    margin-top: 5px;
+}
+
+.comment-data p {
+    margin-top: 4px;
+    font-size: 13px;
+    word-wrap: break-word;
+    white-space: normal;
+    font-weight: lighter;
+}
+.addComment {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.addComment button[type="submit"] {
+    position: absolute;
+    right: 30px;
+    color: #1d92ffcb;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    margin-top: -10px;
+}
+.addComment form {
+    display: flex;
+    margin-bottom: 15px;
+}
+.addComment form label {
+    display: none;
+}
+textarea {
+    position: absolute;
+    left: 30px;
+    width: 85%;
+    resize: none;
+    overflow: hidden;
+    height: 20px;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    font-size: 14px;
+    color: #262626;
+    background: none;
+}
+
+textarea.text::placeholder {
+    color: #777;
 }

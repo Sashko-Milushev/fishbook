@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from fishbook.common.models import PhotoComment
+
+
+@admin.register(PhotoComment)
+class PhotoCommentAdmin(admin.ModelAdmin):
+    pass
