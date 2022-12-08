@@ -14,7 +14,7 @@
                 {% if photo.tagged_fish %}
                 <p>Fish tagged in the photo:</p>
                 {% for fish in photo.tagged_fish.all %}
-                    <p>Tagged fish: {{ fish }}</p>
+                    <p> {{ fish }}</p>
                 {% endfor %}
                 {% else %}
                     <p>No fish tagged</p>
@@ -30,6 +30,9 @@
             <div class="profileImg">
                 <a href="{% url 'details profile' pk=photo.user.pk %}">{{ photo.user.profile.username }} - Link to
                     profile</a>
+                {% if is_owner %}
+                    <a href="edit-photo-page.html">Edit photo</a>
+                {% endif %}
             </div>
 
         </div>
