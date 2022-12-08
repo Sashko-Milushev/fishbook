@@ -1,8 +1,9 @@
 from django.contrib.auth.decorators import login_required
+from django.forms import model_to_dict
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
-from fishbook.photos.forms import PhotoCreateForm
+from fishbook.photos.forms import PhotoCreateForm, PhotoEditForm
 from fishbook.photos.models import Photo
 
 
@@ -34,5 +35,22 @@ def details_photo(request, pk):
 
     return render(request, 'photos/details-photo-page.html', context)
 
+
 def edit_photo(request, pk):
-    pass
+    photo = Photo.objects.filter(pk=pk).get()
+
+    if request.method == 'GET':
+        form = PhotoEditForm(request.GET, instance=photo)
+    else:
+        form = PhotoEditForm(request.POST, instance=photo)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {
+        'form': form,
+        'pk': photo.pk,
+        'photo': photo,
+    }
+
+    return render(request, 'photos/edit-photo-page.html', context)

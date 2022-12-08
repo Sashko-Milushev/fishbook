@@ -16,4 +16,6 @@ class PhotoCreateForm(PhotoBaseForm):
 class PhotoEditForm(PhotoBaseForm):
     class Meta:
         model = Photo
-        exclude = ('publication_date', 'photo')
+        exclude = ('publication_date', 'photo', 'user',)
+
+
