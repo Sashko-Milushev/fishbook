@@ -74,7 +74,8 @@
                 <p class="fishType"># {{ fish.name }}</p>
             {% endfor %}
 
-            <h3 class="postTime">{{ photo.publication_date }} --- <a href="{% url 'details photo' pk=photo.pk %}">see details</a></h3>
+            <h3 class="postTime">{{ photo.publication_date }} --- <a href="{% url 'details photo' pk=photo.pk %}">see
+                details</a></h3>
 
             {% for comment in photo.photocomment_set.all %}
                 <div class="comments">
@@ -83,13 +84,12 @@
                             <div class="profileImg">
                                 <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
                             </div>
+                            <p>{{ photo.user.profile.username }}:</p>
                         </a>
-                        <p>
-                            <a href="{% url 'details profile' pk=photo.user.id %}">
-                                {{ photo.user.profile.username }}
-                            </a>
-                            {{ comment.text }} {{ comment.publication_data }}
-                        </p>
+                        <div class="comment-data">
+                               {{ comment.text }} {{ comment.publication }}
+                        </div>
+
                     </div>
                 </div>
             {% endfor %}

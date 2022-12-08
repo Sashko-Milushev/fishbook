@@ -11,7 +11,7 @@ class PhotoCommentForm(forms.ModelForm):
             'text': forms.Textarea(
                 attrs={
                     'cols': 40,
-                    'rows': 10,
+                    'rows': 2,
                     'placeholder': 'Add comment...',
                 },
             ),
