@@ -40,7 +40,7 @@ def edit_photo(request, pk):
     photo = Photo.objects.filter(pk=pk).get()
 
     if request.method == 'GET':
-        form = PhotoEditForm(request.GET, instance=photo)
+        form = PhotoEditForm(instance=photo)
     else:
         form = PhotoEditForm(request.POST, instance=photo)
         if form.is_valid():

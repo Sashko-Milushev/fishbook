@@ -31,7 +31,7 @@
                 <a href="{% url 'details profile' pk=photo.user.pk %}">{{ photo.user.profile.username }} - Link to
                     profile</a>
                 {% if is_owner %}
-                    <a href="edit-photo-page.html">Edit photo</a>
+                    <a href="{% url 'edit photo' pk=photo.pk %}">Edit photo</a>
                 {% endif %}
             </div>
 

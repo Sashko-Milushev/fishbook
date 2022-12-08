@@ -189,11 +189,9 @@ textarea.text::placeholder {
 .photoDetails {
     height: 72%;
     width: 95%;
-    border: solid black;
 }
 
 .photoDetails .imgBox {
-    border: solid black;
     min-width: 250px;
     min-height: 250px;
     max-width: 600px;
@@ -203,7 +201,6 @@ textarea.text::placeholder {
 }
 
 .userDetails {
-    border: solid black;
     height: 80px;
     width: 620px;
     padding-left: 8px;
@@ -226,7 +223,6 @@ textarea.text::placeholder {
 }
 
 .photoInfo {
-    border: solid black;
     width: 630px;
     height: 420px;
 }
