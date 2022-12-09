@@ -1,11 +1,11 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
     <div class="photo-form">
-        <h2>Edit photo</h2>
+        <h2>Delete photo</h2>
         <img src="{{ photo.photo.url }}" alt="img">
-        <form action="{% url 'edit photo' pk=pk %}" enctype="multipart/form-data" method="post">
+        <form action="{% url 'delete photo' pk=pk %}" enctype="multipart/form-data" method="post">
             {{ form.as_p }}
-            <button type="submit">Edit Photo</button>
+            <button type="submit">Delete Photo</button>
             {% csrf_token %}
         </form>
     </div>

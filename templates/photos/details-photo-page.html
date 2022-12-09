@@ -32,6 +32,7 @@
                     profile</a>
                 {% if is_owner %}
                     <a href="{% url 'edit photo' pk=photo.pk %}">Edit photo</a>
+                    <a href="{% url 'delete photo' pk=photo.pk %}">Delete photo</a>
                 {% endif %}
             </div>
 

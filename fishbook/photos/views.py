@@ -3,7 +3,7 @@ from django.forms import model_to_dict
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
-from fishbook.photos.forms import PhotoCreateForm, PhotoEditForm
+from fishbook.photos.forms import PhotoCreateForm, PhotoEditForm, PhotoDeleteForm
 from fishbook.photos.models import Photo
 
 
@@ -54,3 +54,23 @@ def edit_photo(request, pk):
     }
 
     return render(request, 'photos/edit-photo-page.html', context)
+
+
+def delete_photo(request, pk):
+    photo = Photo.objects.filter(pk=pk).get()
+
+    if request.method == "GET":
+        form = PhotoDeleteForm(instance=photo)
+    else:
+        form = PhotoDeleteForm(request.POST or None, instance=photo)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {
+        'form': form,
+        'pk': pk,
+        'photo': photo,
+    }
+
+    return render(request, 'photos/delete-photo-page.html', context)
