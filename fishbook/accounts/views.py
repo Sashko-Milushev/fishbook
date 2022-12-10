@@ -114,13 +114,15 @@ def add_profile(request):
         form = ProfileCreateForm()
     else:
         form = ProfileCreateForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            form.save_m2m()
+        try:
+            if form.is_valid():
+                profile = form.save(commit=False)
+                profile.user = request.user
+                profile.save()
+                form.save_m2m()
 
-            return redirect('home')
+                return redirect('home')
+        except: Exception('asdas')
 
     context = {
         'form': form,

@@ -41,6 +41,19 @@ class UserEditForm(auth_forms.UserChangeForm):
 
 
 class ProfileBaseForm(forms.ModelForm):
+    def clean(self):
+        super().clean()
+        username = self.cleaned_data.get('username')
+        profile_type = self.cleaned_data.get('profile_type')
+        profile_picture = self.cleaned_data.get('profile_picture')
+        fishing_style = self.cleaned_data.get('fishing_style')
+        if not username or not profile_type or not profile_picture or not fishing_style:
+            message = 'Please fill the whole form.'
+            self.add_error('username', message)
+            self.add_error('profile_type', message)
+            self.add_error('profile_picture', message)
+            self.add_error('fishing_style', message)
+
     class Meta:
         model = Profile
         fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
@@ -51,11 +64,7 @@ class ProfileCreateForm(ProfileBaseForm):
 
 
 class ProfileEditForm(ProfileBaseForm):
-
-    class Meta:
-        model = Profile
-        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
-
+    pass
 
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):
