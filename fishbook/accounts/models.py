@@ -92,3 +92,4 @@ class Profile(StrFromFieldMixin, models.Model):
         blank=True,
         null=True,
     )
+

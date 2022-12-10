@@ -162,7 +162,7 @@ input[type=submit] {
 }
 
 #acc-message {
-    margin-left: 60px;
+    margin-left: 125px;
     padding-top: 30px;
     color: lightskyblue;
 }
@@ -191,9 +191,14 @@ input[type=submit] {
 /*}*/
 
 .profile-form {
-    width: 15%;
+    width: 25%;
+    height: 100%;
     padding: 10px 20px;
     margin-left: 20px;
+    margin-top: -20px;
+    border: solid black;
+    background-color: cornsilk;
+    border-radius: 5%;
 
     display: grid;
     opacity: 0.7;
@@ -233,6 +238,7 @@ img {
     border-radius: 5px 5px 0 0;
     width: 330px;
 }
+
 .profile-card .card img {
     border-radius: 50%;
     width: 250px;
@@ -299,17 +305,20 @@ img {
     border: solid black;
     margin-left: 98px;
 }
+
 .card .editProfile img {
 
     width: 35px;
     margin-top: 3px;
 }
+
 .profile-photos {
     border: solid black;
     width: 690px;
     height: 400px;
     margin: 15px;
 }
+
 .profile-photos a img {
     width: 320px;
     margin: 11px;

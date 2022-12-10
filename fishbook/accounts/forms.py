@@ -51,7 +51,11 @@ class ProfileCreateForm(ProfileBaseForm):
 
 
 class ProfileEditForm(ProfileBaseForm):
-    pass
+
+    class Meta:
+        model = Profile
+        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
+
 
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):

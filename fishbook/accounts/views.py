@@ -164,7 +164,7 @@ def edit_profile(request, pk):
     if request.method == 'GET':
         form = ProfileEditForm(instance=profile)
     else:
-        form = ProfileEditForm(request.POST, request.FILES)
+        form = ProfileEditForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user
