@@ -3,10 +3,12 @@ from django.forms import model_to_dict
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
+from fishbook.core.decorators import profile_required
 from fishbook.photos.forms import PhotoCreateForm, PhotoEditForm, PhotoDeleteForm
 from fishbook.photos.models import Photo
 
 
+@profile_required
 @login_required
 def add_photo(request):
     if request.method == 'GET':
