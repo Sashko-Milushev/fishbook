@@ -200,8 +200,9 @@ input[type=submit] {
 }
 
 .card {
-    margin-left: 50px;
+    margin-left: 80px;
     /*margin-top: 200px;*/
+    position: center;
 
     transition: 0.3s;
     border-radius: 5px; /* 5px rounded corners */
@@ -220,7 +221,10 @@ input[type=submit] {
 
 
 .container {
-    padding: 2px 16px;
+    width: 200px;
+    border: solid black;
+    margin-left: 30px;
+    text-align: center;
 
 }
 
@@ -229,11 +233,23 @@ img {
     border-radius: 5px 5px 0 0;
     width: 330px;
 }
+.profile-card .card img {
+    border-radius: 50%;
+    width: 250px;
+
+}
 
 .profile-card {
-    box-shadow: 5px 5px 5px 5px red;
-    width: 400px;
-    height: 400px;
+    box-shadow: 5px 5px 5px 5px lightskyblue;
+    border-radius: 2px;
+    width: 450px;
+    height: 500px;
+    margin-left: 10px;
+    margin-top: 3px;
+    background-color: cornsilk;
+    opacity: 0.7;
+    display: inline-block;
+
 
 }
 
@@ -261,3 +277,41 @@ img {
     height: 330px;
 }
 
+.profile-parent {
+    display: inline-flex;
+    width: 90%;
+    height: 550px;
+    border: solid black;
+}
+
+.profile-pics {
+    display: inline-block;
+    border: solid black;
+    width: 740px;
+    height: 500px;
+    margin-left: 10px;
+}
+
+.editProfile {
+    display: flex;
+    width: 70px;
+    height: 50px;
+    border: solid black;
+    margin-left: 98px;
+}
+.card .editProfile img {
+
+    width: 35px;
+    margin-top: 3px;
+}
+.profile-photos {
+    border: solid black;
+    width: 690px;
+    height: 400px;
+    margin: 15px;
+}
+.profile-photos a img {
+    width: 320px;
+    margin: 11px;
+    border-radius: 5%;
+}

@@ -1,4 +1,5 @@
 {% extends 'base/base-auth.html' %}
+{% load static %}
 {% block page_content %}
 
     {#    <div class="bg">#}
@@ -17,6 +18,7 @@
     {#            </div>#}
     {#        </div>#}
     {#    </div>#}
+    <div class="profile-parent">
         <div class="profile-card">
             <div class="card">
                 <img src="{{ profile.profile_picture.url }}" alt="profile picture of {{ profile.username }}">
@@ -25,8 +27,41 @@
                     <p>{{ profile.profile_type }}</p>
                     <p>Favourite fishing: {{ profile.fishing_style }}</p>
                 </div>
+                <div class="editProfile">
+                    <a href="{% url 'edit profile' pk=profile.user.pk %}">
+                        <img class="editpic" src="{% static 'images/edit.png' %}" alt="edit button">
+                    </a>
+                    <a href="{% url 'delete user' pk=profile.user.pk %}">
+                        <img class="editpic" src="{% static 'images/delete.jpg' %}" alt="edit button">
+                    </a>
+                </div>
             </div>
         </div>
+        <div class="profile-photos">
+            {% for photo in photos %}
+                <a href="{% url 'details photo' pk=photo.pk %}">
+                    <img src="{{ photo.photo.url }}" alt="fish photo">
+                </a>
+            {% endfor %}
+        <div class="paginator">
+        <span class="step-links">
+            {% if photos.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ photos.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ photos.number }} of {{ photos.paginator.num_pages }}.
+            </span>
+
+            {% if photos.has_next %}
+                <a href="?page={{ photos.next_page_number }}">next</a>
+                <a href="?page={{ photos.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+        </div>
+    </div>
 
 
 

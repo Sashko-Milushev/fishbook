@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_view, login, get_user_model, update_session_auth_hash
 from django.urls import reverse_lazy
@@ -7,6 +8,7 @@ from django.http import HttpResponseRedirect
 
 from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
 from fishbook.accounts.models import Profile, AppUser
+from fishbook.photos.models import Photo
 from services.ses import SESService
 from services.sqs import SQSService
 
@@ -134,14 +136,27 @@ def get_profile_by_id(pk):
     return Profile.objects.filter(pk=pk).get()
 
 
-def details_profile(request, pk):
-    profile = get_profile_by_id(pk)
+class ProfileDetailsView(views.DetailView):
+    model = Profile
+    template_name = 'accounts/profile/details-profile-page.html'
+    photo_paginate_by = 2
 
-    context = {
-        'profile': profile,
-    }
+    def get_photos_page(self):
+        return self.request.GET.get('page', 1)
 
-    return render(request, 'accounts/profile/details-profile-page.html', context)
+    def get_paginated_photos(self):
+        page = self.get_photos_page()
+        photos = self.object.user.photo_set.order_by('publication_date').all()
+        paginator = Paginator(photos, self.photo_paginate_by)
+        return paginator.get_page(page)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['is_owner'] = self.request.user == self.object
+        context['photos'] = self.get_paginated_photos()
+
+        return context
 
 
 def edit_profile(request, pk):
