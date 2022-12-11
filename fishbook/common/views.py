@@ -25,8 +25,8 @@ class HomeView(views.TemplateView):
         return context
 
 
-@profile_required
 @login_required
+@profile_required
 def like_photo(request, photo_id):
     user_liked_photos = PhotoLike.objects.filter(photo_id=photo_id, user_id=request.user.pk)
 
@@ -38,8 +38,8 @@ def like_photo(request, photo_id):
     return redirect(get_photo_url(request, photo_id))
 
 
-@profile_required
 @login_required
+@profile_required
 def comment_photo(request, photo_id):
     photo = Photo.objects.filter(pk=photo_id).get()
 
