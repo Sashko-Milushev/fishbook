@@ -1,11 +1,16 @@
 {% extends 'base/base-auth.html' %}
 {% block page_content %}
     <div>
-        <h1 style="color: darkred; padding-top: 10px; padding-left: 10px">Are you sure you want to delete your
-            account?</h1>
-        <form class="profile-form" method="post" action="{% url 'delete user' pk=request.user.pk %}">
-            <input style="cursor: pointer" type="submit" value="YES"/>
-            {% csrf_token %}
-        </form>
+        {% if is_owner %}
+            <h1 style="color: darkred; padding-top: 10px; padding-left: 10px">Are you sure you want to delete your
+                account?</h1>
+            <form class="profile-form" method="post" action="{% url 'delete user' pk=request.user.pk %}">
+                <input style="cursor: pointer" type="submit" value="YES"/>
+                {% csrf_token %}
+            </form>
+        {% else %}
+            <h1>This is not your account to delete! Please, go to your<a href="{% url 'details user' pk=user_pk %}">
+                account...</a></h1>
+        {% endif %}
     </div>
 {% endblock %}

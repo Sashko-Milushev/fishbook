@@ -8,8 +8,8 @@ from fishbook.photos.forms import PhotoCreateForm, PhotoEditForm, PhotoDeleteFor
 from fishbook.photos.models import Photo
 
 
-@profile_required
 @login_required
+@profile_required
 def add_photo(request):
     if request.method == 'GET':
         form = PhotoCreateForm()

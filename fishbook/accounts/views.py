@@ -33,10 +33,10 @@ class SignUpView(views.CreateView):
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
-        user = self.object
-        user.save()
-        # SQSService().send_message(user.email)
+
         return response
+
+        # SQSService().send_message(user.email)
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -95,6 +95,13 @@ class UserDeleteView(views.DeleteView):
     model = UserModel
     success_url = reverse_lazy('home')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['is_owner'] = self.request.user == self.object
+        context['user_pk'] = self.request.user.pk
+        return context
+
 
 class UserDetailsView(views.DetailView):
     template_name = 'accounts/user/details-user-page.html'
@@ -152,7 +159,7 @@ class ProfileDetailsView(views.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['is_owner'] = self.request.user == self.object
+        context['is_owner'] = self.request.user == self.object.user
         context['photos'] = self.get_paginated_photos()
 
         return context

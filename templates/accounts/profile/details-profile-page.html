@@ -27,6 +27,7 @@
                     <p>{{ profile.profile_type }}</p>
                     <p>Favourite fishing: {{ profile.fishing_style }}</p>
                 </div>
+                {% if is_owner %}
                 <div class="editProfile">
                     <a href="{% url 'edit profile' pk=profile.user.pk %}">
                         <img class="editpic" src="{% static 'images/edit.png' %}" alt="edit button">
@@ -35,6 +36,7 @@
                         <img class="editpic" src="{% static 'images/delete.jpg' %}" alt="edit button">
                     </a>
                 </div>
+                {% endif %}
             </div>
         </div>
         <div class="profile-photos">

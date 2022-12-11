@@ -136,6 +136,22 @@ li a:hover {
 
 
 }
+.user-form-edit {
+    width: 35%;
+    padding: 20px 20px;
+    margin-left: 20px;
+    border: solid black;
+    display: inline-grid;
+    background-color: azure;
+    opacity: 0.6;
+}
+.profile-form-pass-change button[type=submit] {
+    background-color: lightblue;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    width: 300px;
+}
 
 input {
     background-color: lightcyan;
@@ -162,8 +178,8 @@ input[type=submit] {
 }
 
 #acc-message {
-    margin-left: 125px;
-    padding-top: 30px;
+    margin-left: 55px;
+    padding-top: 10px;
     color: lightskyblue;
 }
 
@@ -189,6 +205,25 @@ input[type=submit] {
 /*    display: flex;*/
 
 /*}*/
+.profile-form-pass-change {
+    width: 350px;
+    height: 450px;
+    margin-left: 20px;
+    margin-top: -7px;
+    border-radius: 2%;
+    padding: 10px 10px;
+    background-color: lightgoldenrodyellow;
+    display: grid;
+    opacity: 0.7;
+}
+.profile-form-pass-change p {
+    text-decoration-color: red;
+}
+.acc-message {
+    margin-left: 72px;
+    color: lightskyblue;
+    margin-top: 8px;
+}
 
 .profile-form {
     width: 25%;
@@ -196,8 +231,6 @@ input[type=submit] {
     padding: 10px 20px;
     margin-left: 20px;
     margin-top: -20px;
-    border: solid black;
-    background-color: cornsilk;
     border-radius: 5%;
 
     display: grid;
@@ -227,7 +260,6 @@ input[type=submit] {
 
 .container {
     width: 200px;
-    border: solid black;
     margin-left: 30px;
     text-align: center;
 
@@ -287,12 +319,10 @@ img {
     display: inline-flex;
     width: 90%;
     height: 550px;
-    border: solid black;
 }
 
 .profile-pics {
     display: inline-block;
-    border: solid black;
     width: 740px;
     height: 500px;
     margin-left: 10px;
@@ -302,7 +332,6 @@ img {
     display: flex;
     width: 70px;
     height: 50px;
-    border: solid black;
     margin-left: 98px;
 }
 

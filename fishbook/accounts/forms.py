@@ -41,6 +41,13 @@ class UserEditForm(auth_forms.UserChangeForm):
 
 
 class ProfileBaseForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileBaseForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget = forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Username'})
+
+
     def clean(self):
         super().clean()
         username = self.cleaned_data.get('username')
@@ -53,6 +60,7 @@ class ProfileBaseForm(forms.ModelForm):
             self.add_error('profile_type', message)
             self.add_error('profile_picture', message)
             self.add_error('fishing_style', message)
+
 
     class Meta:
         model = Profile
