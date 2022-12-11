@@ -11,7 +11,24 @@
     width: 590px;
     height: 410px;
 }
+.photoformheader {
+    color: lightskyblue;
 
+    text-align: center;
+}
+.photo-form {
+    border: solid lightskyblue;
+    display: grid;
+    text-align: center;
+    border-radius: 2%;
+
+}
+
+.photo-form-container {
+    border: black;
+    height: 97%;
+    width: 400px;
+}
 .post {
     margin: 2% 30%;
     position: relative;
@@ -226,10 +243,12 @@ textarea.text::placeholder {
     width: 630px;
     height: 420px;
 }
+
 .child {
     display: inline-block;
 
 }
+
 .parent {
     display: inline-flex;
 }

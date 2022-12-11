@@ -21,11 +21,15 @@ class PhotoEditForm(PhotoBaseForm):
         exclude = ('publication_date', 'photo', 'user',)
 
 
-class PhotoDeleteForm(DisableFieldFormMixin, PhotoBaseForm):
-    disabled_fields = '__all__'
+class PhotoDeleteForm(PhotoBaseForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['description'].disabled = True
+        self.fields['photo'].disabled = True
+        self.fields['location'].disabled = True
+        self.fields['tagged_fish'].disabled = True
+        self.fields['fishing_style'].disabled = True
 
     def save(self, commit=True):
         if commit:

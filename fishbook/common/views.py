@@ -5,6 +5,7 @@ from django.views import generic as views
 from fishbook.common.forms import PhotoCommentForm
 from fishbook.common.models import PhotoLike
 from fishbook.common.utils import get_photo_url
+from fishbook.core.decorators import profile_required
 from fishbook.core.utils import apply_likes_count, apply_user_liked_photo
 from fishbook.photos.models import Photo
 
@@ -24,6 +25,7 @@ class HomeView(views.TemplateView):
         return context
 
 
+@profile_required
 @login_required
 def like_photo(request, photo_id):
     user_liked_photos = PhotoLike.objects.filter(photo_id=photo_id, user_id=request.user.pk)
@@ -36,6 +38,7 @@ def like_photo(request, photo_id):
     return redirect(get_photo_url(request, photo_id))
 
 
+@profile_required
 @login_required
 def comment_photo(request, photo_id):
     photo = Photo.objects.filter(pk=photo_id).get()

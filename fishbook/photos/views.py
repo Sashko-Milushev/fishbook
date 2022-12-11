@@ -51,7 +51,7 @@ def edit_photo(request, pk):
 
     context = {
         'form': form,
-        'pk': photo.pk,
+        'pk': pk,
         'photo': photo,
     }
 

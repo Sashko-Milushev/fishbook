@@ -11,6 +11,6 @@ def profile_required(view_func):
         if not profile.is_completed:
             return redirect('create profile')
 
-        return view_func(*args, **kwargs)
+        return view_func(request, *args, **kwargs)
 
     return wrapper

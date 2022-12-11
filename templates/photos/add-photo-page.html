@@ -1,9 +1,12 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <div class="photo-form">
-        <h2>Add photo</h2>
-        <form action="{% url 'add photo' %}" enctype="multipart/form-data" method="post">
-            {{ form.as_p }}
+    <div class="photo-form-container">
+        <h1 class="photoformheader">Add photo</h1>
+        <form class="photo-form" action="{% url 'add photo' %}" enctype="multipart/form-data" method="post">
+            {% for field in form %}
+                <p class="error">{{ field.errors }}</p>
+                <label>{{ field.label }} : {{ field }}</label>
+            {% endfor %}
             <button type="submit">Add Photo</button>
             {% csrf_token %}
         </form>
