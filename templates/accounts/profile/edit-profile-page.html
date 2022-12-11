@@ -3,8 +3,8 @@
 {% block page_content %}
 
     <div>
-        <h1 id="acc-message">Edit profile</h1>
-        <form class="profile-form-pass-change" method="post" action="{% url 'edit profile' pk=profile.pk %}"
+        <h1 class="msgEditPrfl">Edit profile</h1>
+        <form class="user-form-edit" method="post" action="{% url 'edit profile' pk=profile.pk %}"
               enctype="multipart/form-data">
             {% for field in form %}
                 <p class="error">{{ field.errors }}</p>

@@ -133,19 +133,27 @@ li a:hover {
 
     display: grid;
     opacity: 0.3;
-
-
 }
+
+.msgEditPrfl {
+    margin-left: 135px;
+    margin-top: 6px;
+    color: lightskyblue;
+}
+
 .user-form-edit {
-    width: 35%;
-    padding: 20px 20px;
+    width: 350px;
+    height: 450px;
     margin-left: 20px;
-    border: solid black;
-    display: inline-grid;
-    background-color: azure;
+    margin-top: -20px;
+    border-radius: 2%;
+    padding: 0 20px;
+    background-color: lightgoldenrodyellow;
+    display: grid;
     opacity: 0.6;
 }
-.profile-form-pass-change button[type=submit] {
+
+.user-form-edit button[type=submit] {
     background-color: lightblue;
     border-radius: 5px;
     cursor: pointer;
@@ -216,9 +224,11 @@ input[type=submit] {
     display: grid;
     opacity: 0.7;
 }
+
 .profile-form-pass-change p {
     text-decoration-color: red;
 }
+
 .acc-message {
     margin-left: 72px;
     color: lightskyblue;
