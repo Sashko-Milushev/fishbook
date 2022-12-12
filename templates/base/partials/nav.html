@@ -5,9 +5,11 @@
         <li>
             <a href="{% url 'home' %}">Fishbook</a>
         </li>
-        <li>
-            <a href="{% url 'add photo' %}">Add photo</a>
-        </li>
+        {% if user.profile.is_completed %}
+            <li>
+                <a href="{% url 'add photo' %}">Add photo</a>
+            </li>
+        {% endif %}
         <li>
             <a href="{% url 'fish catalogue' %}">Fishipedia</a>
         </li>

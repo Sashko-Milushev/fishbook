@@ -1,11 +1,9 @@
+import os
 from pathlib import Path
 import mimetypes
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
-
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -34,7 +32,6 @@ INSTALLED_APPS = [
     'fishbook.common',
     'fishbook.fish',
     'fishbook.photos',
-
 
 
 ]
@@ -105,12 +102,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 MEDIA_URL = '/media/'
 
@@ -121,3 +119,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AppUser'
 
 LOGIN_URL = reverse_lazy('login user')
+
+

@@ -8,7 +8,8 @@ urlpatterns = [
     path('', include('fishbook.common.urls')),
     path('accounts/', include('fishbook.accounts.urls')),
     path('fish/', include('fishbook.fish.urls')),
-    path('photos/', include('fishbook.photos.urls'))
+    path('photos/', include('fishbook.photos.urls')),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
