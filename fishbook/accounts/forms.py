@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 from django.core.exceptions import ValidationError
-from django.forms import CheckboxSelectMultiple, PasswordInput
+from django.forms import CheckboxSelectMultiple, PasswordInput, EmailInput
 
 from fishbook.accounts.models import Profile
 
@@ -15,20 +15,16 @@ class SignUpForm(auth_forms.UserCreationForm):
         field_classes = {
             'email': auth_forms.UsernameField,
         }
-        widgets = {
-            'email': forms.TextInput(
-                attrs={
-                    'placeholder': 'Email',
-                }
-            ),
-        }
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget = EmailInput(
+            attrs={'class': 'form-control', 'placeholder': 'Enter email'})
         self.fields['password1'].widget = PasswordInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter password'})
         self.fields['password2'].widget = PasswordInput(
             attrs={'class': 'form-control', 'placeholder': 'Repeat password'})
+
 
 
 class UserEditForm(auth_forms.UserChangeForm):

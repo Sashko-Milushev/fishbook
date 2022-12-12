@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('fishbook.accounts.urls')),
     path('fish/', include('fishbook.fish.urls')),
     path('photos/', include('fishbook.photos.urls')),
+    path('lakes/', include('fishbook.lakes.urls'))
 
 ]
 if settings.DEBUG:
