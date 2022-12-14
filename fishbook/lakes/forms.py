@@ -1,6 +1,6 @@
 from django import forms
 
-from fishbook.lakes.models import PrivateLake
+from fishbook.lakes.models import PrivateLake, PublicLake
 
 
 class PrivateLakeBaseForm(forms.ModelForm):
@@ -18,4 +18,14 @@ class PrivateLakeEditForm(PrivateLakeBaseForm):
 
 
 class PrivateLakeDeleteForm(PrivateLakeBaseForm):
+    pass
+
+
+class PublicLakeBaseForm(forms.ModelForm):
+    class Meta:
+        model = PublicLake
+        fields = ('name', 'photo', 'fish', 'region', 'address', 'google_maps_link')
+
+
+class PublicLakeCreateForm(PublicLakeBaseForm):
     pass
