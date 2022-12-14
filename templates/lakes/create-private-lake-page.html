@@ -1,0 +1,11 @@
+{% extends 'base/base-lake.html' %}
+
+{% block page_content %}
+    <div>
+        <form class="lake-form" action="{% url 'create lake' %}" method="post" enctype="multipart/form-data">
+            {{ form }}
+            {% csrf_token %}
+        <button type="submit">Create</button>
+        </form>
+    </div>
+{% endblock %}

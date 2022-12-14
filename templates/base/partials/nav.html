@@ -9,6 +9,11 @@
             <li>
                 <a href="{% url 'add photo' %}">Add photo</a>
             </li>
+            {% if user.profile.profile_type == 'lake_owner' %}
+                <li>
+                    <a href="{% url 'create lake' %}">Add lake</a>
+                </li>
+            {% endif %}
         {% endif %}
         <li>
             <a href="{% url 'fish catalogue' %}">Fishipedia</a>
