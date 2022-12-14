@@ -15,6 +15,7 @@ class PublicLakesListView(views.ListView):
     context_object_name = 'public_lakes'
     paginate_by = 3
 
+
 class PrivateLakesListView(views.ListView):
     template_name = 'lakes/show-private-lakes.html'
     model = PrivateLake

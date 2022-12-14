@@ -1,5 +1,17 @@
 {% extends 'base/base-lake.html' %}
 
 {% block page_content %}
+    <div class="lake-card-details parent">
+        <div class="lake-card-child child">
+            <img class="lake-img" src="{{ publiclake.photo.url }}" alt="{{ publiclake.name }} photo">
+            <form action="{% url 'list public lakes' %}">
+                <input type="submit" value="Back to all"/>
+            </form>
+        </div>
+        <div class="lakeDetails child">
+            <p>{{ publiclake.name }}</p>
+            <p>{{ publiclake.google_maps_link }}</p>
+        </div>
 
+    </div>
 {% endblock %}
