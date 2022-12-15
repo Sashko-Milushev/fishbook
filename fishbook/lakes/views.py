@@ -69,6 +69,7 @@ class PublicLakeDetailsView(views.DetailView):
     template_name = 'lakes/public-lake-details-page.html'
 
 
+
 class PublicLakeCreateView(views.CreateView):
     template_name = 'lakes/create-public-lake-page.html'
     form_class = PublicLakeCreateForm

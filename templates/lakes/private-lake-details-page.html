@@ -1,1 +1,32 @@
-<h1>details</h1>
+{% extends 'base/base-lake.html' %}
+
+{% block page_content %}
+    <div class="lake-card-details parent">
+        <div class="privatelake-card-child child">
+            <img class="lake-img" src="{{ privatelake.photo.url }}" alt="{{ privatelake.name }} photo">
+            <p>Private Lake {{ privatelake.name }}</p>
+            <p>Region {{ privatelake.region }}</p>
+            {% if privatelake.address %}
+                <p>{{ privatelake.address }}</p>
+            {% endif %}
+            {% if privatelake.phone %}
+                <p>Phone: {{ privatelake.phone }}</p>
+            {% endif %}
+            <p><a href="{{ privatelake.google_maps_link }}" target="_blank" rel="noopener norefferer">Link
+                to {{ privatelake.name }}'s</a> page in GOOGLE MAPS</p>
+            <p>Day tax: {{ privatelake.day_tax }}</p>
+            <form action="{% url 'list private lakes' %}">
+                <input type="submit" value="Back to all"/>
+            </form>
+        </div>
+        <div class="lakeDetails child">
+            <p>In {{ privatelake.name }} you can catch:</p>
+            {% for fish in privatelake.fish.all %}
+                <a href="{% url 'fish details' pk=fish.pk %}" target="_blank" rel="noopener norefferer">
+                    <p><img class="lake-fish-image" src="{{ fish.fish_picture }}"
+                            alt="{{ fish.name }}img">{{ fish.name }}</p></a>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

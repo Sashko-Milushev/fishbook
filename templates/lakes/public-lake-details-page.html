@@ -4,13 +4,23 @@
     <div class="lake-card-details parent">
         <div class="lake-card-child child">
             <img class="lake-img" src="{{ publiclake.photo.url }}" alt="{{ publiclake.name }} photo">
+            <p>Public Lake {{ publiclake.name }}</p>
+            <p>Region {{ publiclake.region }}</p>
+            {% if publiclake.address %}
+                <p>{{ publiclake.address }}</p>
+            {% endif %}
+            <p><a href="{{ publiclake.google_maps_link }}" target="_blank" rel="noopener norefferer">Link
+                to {{ publiclake.name }}'s</a> page in GOOGLE MAPS</p>
             <form action="{% url 'list public lakes' %}">
                 <input type="submit" value="Back to all"/>
             </form>
         </div>
         <div class="lakeDetails child">
-            <p>{{ publiclake.name }}</p>
-            <p>{{ publiclake.google_maps_link }}</p>
+            <p>In {{ publiclake.name }} you can catch:</p>
+            {% for fish in publiclake.fish.all %}
+                <a href="{% url 'fish details' pk=fish.pk %}" target="_blank" rel="noopener norefferer">
+                    <p><img class="lake-fish-image" src="{{ fish.fish_picture }}" alt="{{ fish.name }}img">{{ fish.name }}</p></a>
+            {% endfor %}
         </div>
 
     </div>
