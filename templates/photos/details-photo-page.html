@@ -11,10 +11,10 @@
                 <br>
                 <p>Caught by {{ photo.user.profile.username }} at {{ photo.location }}.</p>
                 <p>Photo is uploaded at {{ photo.publication_date }}</p>
-                {% if photo.tagged_fish %}
+                {% if photo.tagged_fish.all %}
                 <p>Fish tagged in the photo:</p>
                 {% for fish in photo.tagged_fish.all %}
-                    <p> {{ fish }}</p>
+                    <p> <a style="text-decoration: none" target="_blank" rel="noopener norefferer" href="{% url 'fish details' pk=fish.pk %}">{{ fish }}</a</p>
                 {% endfor %}
                 {% else %}
                     <p>No fish tagged</p>

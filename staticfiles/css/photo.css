@@ -13,14 +13,16 @@
 }
 .photoformheader {
     color: lightskyblue;
-
-    text-align: center;
+    margin-left: 60px;
 }
 .photo-form {
-    border: solid lightskyblue;
+    width: 15%;
+    padding: 10px 20px;
+    margin-left: 20px;
+
+
     display: grid;
-    text-align: center;
-    border-radius: 2%;
+    opacity: 0.7;
 
 }
 

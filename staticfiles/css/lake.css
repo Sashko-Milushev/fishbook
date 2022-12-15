@@ -48,11 +48,8 @@
 .lake-card-details {
     width: 900px;
     height: 490px;
-
-    border: solid red;
 }
 .lakeDetails {
-    border: solid black;
     width: 590px;
 }
 .lakeDetails .child{
