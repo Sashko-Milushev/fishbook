@@ -9,8 +9,6 @@ from django.http import HttpResponseRedirect
 from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
 from fishbook.accounts.models import Profile, AppUser
 from fishbook.photos.models import Photo
-from services.ses import SESService
-from services.sqs import SQSService
 
 UserModel = get_user_model()
 
@@ -158,11 +156,21 @@ class ProfileDetailsView(views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        context['profile_type'] = self.object.profile_type
         context['is_owner'] = self.request.user == self.object.user
         context['photos'] = self.get_paginated_photos()
 
         return context
+
+
+class EditProfileView(views.UpdateView):
+    template_name = 'accounts/profile/edit-profile-page.html'
+    model = Profile
+    fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
+
+
+    def get_success_url(self):
+        return self.success_url or redirect('home')
 
 
 def edit_profile(request, pk):

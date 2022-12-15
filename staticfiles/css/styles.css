@@ -47,6 +47,16 @@ body, html {
     width: 100%;
     height: 100%;
 }
+.error {
+    text-decoration-color: red;
+}
+.user-form-edit ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background-color: lightcyan;
+}
 
 ul {
     list-style-type: none;
@@ -143,11 +153,11 @@ li a:hover {
 
 .user-form-edit {
     width: 350px;
-    height: 450px;
+    height: 700px;
     margin-left: 20px;
     margin-top: -20px;
-    border-radius: 2%;
-    padding: 0 20px;
+    border-radius: 1%;
+    padding: 0 5px;
     background-color: lightgoldenrodyellow;
     display: grid;
     opacity: 0.6;
@@ -284,6 +294,7 @@ img {
 .profile-card .card img {
     border-radius: 50%;
     width: 250px;
+    margin-top: 5px;
 
 }
 
@@ -363,4 +374,3 @@ img {
     margin: 11px;
     border-radius: 5%;
 }
-

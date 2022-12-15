@@ -24,8 +24,8 @@
                 <img src="{{ profile.profile_picture.url }}" alt="profile picture of {{ profile.username }}">
                 <div class="container">
                     <h4><b>{{ profile.username }}</b></h4>
-                    <p>{{ profile.profile_type }}</p>
-                    <p>Favourite fishing: {{ profile.fishing_style }}</p>
+                    <p>{{ profile.get_profile_type_display }}</p>
+                    <p>Favourite fishing: {{ profile.get_fishing_style_display }}</p>
                 </div>
                 {% if is_owner %}
                 <div class="editProfile">

@@ -26,7 +26,6 @@ class SignUpForm(auth_forms.UserCreationForm):
             attrs={'class': 'form-control', 'placeholder': 'Repeat password'})
 
 
-
 class UserEditForm(auth_forms.UserChangeForm):
     class Meta:
         model = UserModel
@@ -37,12 +36,14 @@ class UserEditForm(auth_forms.UserChangeForm):
 
 
 class ProfileBaseForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
 
     def __init__(self, *args, **kwargs):
         super(ProfileBaseForm, self).__init__(*args, **kwargs)
         self.fields['username'].widget = forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Username'})
-
 
     def clean(self):
         super().clean()
@@ -58,17 +59,29 @@ class ProfileBaseForm(forms.ModelForm):
             self.add_error('fishing_style', message)
 
 
+class ProfileCreateForm(ProfileBaseForm):
     class Meta:
         model = Profile
         fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
 
 
-class ProfileCreateForm(ProfileBaseForm):
-    pass
-
-
 class ProfileEditForm(ProfileBaseForm):
-    pass
+    class Meta:
+        model = Profile
+        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
+
+    def clean(self):
+        super().clean()
+        username = self.cleaned_data.get('username')
+        profile_type = self.cleaned_data.get('profile_type')
+        profile_picture = self.cleaned_data.get('profile_picture')
+        fishing_style = self.cleaned_data.get('fishing_style')
+        if not username or not profile_type or not profile_picture or not fishing_style:
+            message = 'Please fill the whole form.'
+            self.add_error('username', message)
+            self.add_error('profile_type', message)
+            self.add_error('profile_picture', message)
+            self.add_error('fishing_style', message)
 
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):
