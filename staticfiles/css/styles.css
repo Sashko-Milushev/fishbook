@@ -52,6 +52,9 @@ body, html {
 .error {
     text-decoration-color: red;
 }
+.msg {
+    background-color: lightcyan;
+}
 .user-form-edit ul {
     list-style-type: none;
     margin: 0;

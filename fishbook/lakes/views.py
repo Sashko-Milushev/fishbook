@@ -8,6 +8,8 @@ from fishbook.core.decorators import profile_required, lake_owner_required
 from fishbook.lakes.forms import PrivateLakeCreationForm, PublicLakeCreateForm, PrivateLakeEditForm
 from fishbook.lakes.models import PrivateLake, PublicLake
 
+decorators = [profile_required, lake_owner_required]
+
 
 class PublicLakesListView(views.ListView):
     template_name = 'lakes/show-public-lakes.html'
@@ -44,9 +46,6 @@ class PrivateLakeDetailsView(views.DetailView):
     template_name = 'lakes/private-lake-details-page.html'
 
 
-decorators = [profile_required, lake_owner_required]
-
-
 @method_decorator(decorators, name='dispatch')
 class PrivateLakeCreateView(views.CreateView):
     template_name = 'lakes/create-private-lake-page.html'
@@ -58,6 +57,7 @@ class PrivateLakeCreateView(views.CreateView):
         return super(PrivateLakeCreateView, self).form_valid(form)
 
 
+@method_decorator(decorators, name='dispatch')
 class PrivateLakeEditView(views.UpdateView):
     template_name = 'lakes/edit-private-lake-page.html'
     form_class = PrivateLakeEditForm
@@ -67,7 +67,6 @@ class PrivateLakeEditView(views.UpdateView):
 class PublicLakeDetailsView(views.DetailView):
     model = PublicLake
     template_name = 'lakes/public-lake-details-page.html'
-
 
 
 class PublicLakeCreateView(views.CreateView):

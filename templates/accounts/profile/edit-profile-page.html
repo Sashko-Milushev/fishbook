@@ -1,7 +1,7 @@
 {% extends 'base/base-auth.html' %}
 {% load placeholders %}
 {% block page_content %}
-
+    {% if is_owner %}
     <div>
         <h1 class="msgEditPrfl">Edit profile</h1>
         <form class="user-form-edit" method="post" action="{% url 'edit profile' pk=profile.pk %}"
@@ -16,5 +16,7 @@
 
         </form>
     </div>
-
+    {% else %}
+        <h1>This is not your profile to edit! Link to your profile: <a style="text-decoration: none" href="{% url 'details profile' pk=user.pk %}">Click</a></h1>
+    {% endif %}
 {% endblock %}

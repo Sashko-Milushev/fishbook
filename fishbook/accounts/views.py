@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import views as auth_view, login, get_user_model, update_session_auth_hash
 from django.urls import reverse_lazy
 from django.views import generic as views
-from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
 from fishbook.accounts.models import Profile, AppUser
@@ -16,6 +16,11 @@ UserModel = get_user_model()
 class SignInView(auth_view.LoginView):
     template_name = 'accounts/user/login-user-page.html'
     success_url = reverse_lazy('home')
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        messages.success(request, 'Welcome to Fishbook!')
+        return response
 
     def get_success_url(self):
         if self.success_url:
@@ -31,6 +36,7 @@ class SignUpView(views.CreateView):
 
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
+        messages.success(request, 'Wellcome! Please, finish your profile to have full experience.')
 
         return response
 
@@ -163,13 +169,17 @@ class ProfileDetailsView(views.DetailView):
         return context
 
 
-class EditProfileView(views.UpdateView):
-    template_name = 'accounts/profile/edit-profile-page.html'
-    model = Profile
-    fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
-
-    def get_success_url(self):
-        return self.success_url or redirect('home')
+# class EditProfileView(views.UpdateView):
+#     template_name = 'accounts/profile/edit-profile-page.html'
+#     model = Profile
+#     fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
+#
+#     def get_success_url(self):
+#         return self.success_url or redirect('home')
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
 
 
 def edit_profile(request, pk):
@@ -188,5 +198,6 @@ def edit_profile(request, pk):
     context = {
         'form': form,
         'profile': profile,
+        'is_owner': profile.user.pk == request.user.pk,
     }
     return render(request, 'accounts/profile/edit-profile-page.html', context)

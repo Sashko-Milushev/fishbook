@@ -9,6 +9,7 @@ def profile_required(view_func):
     def wrapper(request, *args, **kwargs):
         profile = request.user.profile
         if not profile.is_completed:
+
             return redirect('create profile')
 
         return view_func(request, *args, **kwargs)

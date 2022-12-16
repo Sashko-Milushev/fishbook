@@ -5,7 +5,7 @@ from fishbook.lakes.views import PrivateLakeCreateView, PrivateLakeEditView, Pub
 
 urlpatterns = (
     path('private/', include([
-        path('', PublicLakesListView.as_view(), name='list public lakes'),
+        path('', PrivateLakesListView.as_view(), name='list private lakes'),
         path('create/', PrivateLakeCreateView.as_view(), name='create private lake'),
         path('<int:pk>/', include([
             path('', PrivateLakeDetailsView.as_view(), name='details private lake'),
@@ -13,7 +13,7 @@ urlpatterns = (
         ]))
     ])),
     path('public/', include([
-        path('', PrivateLakesListView.as_view(), name='list private lakes'),
+        path('', PublicLakesListView.as_view(), name='list public lakes'),
         path('create/', PublicLakeCreateView.as_view(), name='create public lake'),
         path('<int:pk>/', PublicLakeDetailsView.as_view(), name='details public lake'),
         ])),
