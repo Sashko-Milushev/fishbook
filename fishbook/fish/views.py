@@ -1,7 +1,5 @@
 from django.views import generic as views
-
 from fishbook.fish.models import Fish
-from fishbook.fish.utils import get_fish_by_id
 
 
 class FishView(views.ListView):

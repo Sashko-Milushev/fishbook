@@ -1,5 +1,3 @@
-from django.core.paginator import Paginator
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views import generic as views
@@ -23,22 +21,6 @@ class PrivateLakesListView(views.ListView):
     model = PrivateLake
     context_object_name = 'private_lakes'
     paginate_by = 3
-
-    # def get_lakes_page(self):
-    #     return self.request.GET.get('page', 1)
-    #
-    # def get_paginated_lakes(self):
-    #     page = self.get_lakes_page()
-    #     private_lakes = PrivateLake.objects.order_by('name').all()
-    #     paginator = Paginator(private_lakes, self.paginate_by)
-    #     return paginator.get_page(page)
-    #
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super().get_context_data(*args, **kwargs)
-    #
-    #     context['private_lakes'] = self.get_paginated_lakes()
-    #
-    #     return context
 
 
 class PrivateLakeDetailsView(views.DetailView):
@@ -69,6 +51,7 @@ class PublicLakeDetailsView(views.DetailView):
     template_name = 'lakes/public-lake-details-page.html'
 
 
+@method_decorator(decorator=profile_required, name='dispatch')
 class PublicLakeCreateView(views.CreateView):
     template_name = 'lakes/create-public-lake-page.html'
     form_class = PublicLakeCreateForm

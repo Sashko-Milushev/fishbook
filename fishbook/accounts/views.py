@@ -7,8 +7,8 @@ from django.views import generic as views
 from django.contrib import messages
 
 from fishbook.accounts.forms import SignUpForm, ProfileCreateForm, ProfileEditForm, UserEditForm, PasswordChangeForm
-from fishbook.accounts.models import Profile, AppUser
-from fishbook.photos.models import Photo
+from fishbook.accounts.models import Profile
+from fishbook.accounts.utils import get_user_by_id, get_profile_by_id
 
 UserModel = get_user_model()
 
@@ -138,14 +138,6 @@ def add_profile(request):
     return render(request, 'accounts/profile/create-profile-page.html', context)
 
 
-def get_user_by_id(pk):
-    return AppUser.objects.filter(pk=pk).get()
-
-
-def get_profile_by_id(pk):
-    return Profile.objects.filter(pk=pk).get()
-
-
 class ProfileDetailsView(views.DetailView):
     model = Profile
     template_name = 'accounts/profile/details-profile-page.html'
@@ -167,19 +159,6 @@ class ProfileDetailsView(views.DetailView):
         context['photos'] = self.get_paginated_photos()
 
         return context
-
-
-# class EditProfileView(views.UpdateView):
-#     template_name = 'accounts/profile/edit-profile-page.html'
-#     model = Profile
-#     fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
-#
-#     def get_success_url(self):
-#         return self.success_url or redirect('home')
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
 
 
 def edit_profile(request, pk):

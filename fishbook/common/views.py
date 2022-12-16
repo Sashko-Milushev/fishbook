@@ -51,4 +51,3 @@ def comment_photo(request, photo_id):
         comment.save()
 
     return redirect('home')
-
