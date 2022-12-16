@@ -25,8 +25,8 @@ body, html {
 
 .bg {
 
-    background-image: url("../images/344036.jpg");
-    height: 1200px;
+    background-image: url("../images/wall1.jpg");
+    height: 900px;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -49,12 +49,15 @@ body, html {
     width: 100%;
     height: 100%;
 }
+
 .error {
     text-decoration-color: red;
 }
+
 .msg {
     background-color: lightcyan;
 }
+
 .user-form-edit ul {
     list-style-type: none;
     margin: 0;
@@ -89,6 +92,24 @@ li a .dropbtn {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+
+.fourOfour {
+    background-image: url("../images/404.jpg");
+    height: 1200px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fiveoo {
+    background-image: url("../images/500.jpg");
+    height: 1200px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 li a:hover, .dropdown:hover .dropbtn {
@@ -147,7 +168,7 @@ li a:hover {
 
 
     display: grid;
-    opacity: 0.3;
+    opacity: 0.7;
 }
 
 .msgEditPrfl {

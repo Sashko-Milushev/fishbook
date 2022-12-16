@@ -1,4 +1,11 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    <h3>NOT FOUND 404 PAGE</h3>
+    <div class="fourOfour">
+        <h3>The page you are looking for does not exist</h3>
+        <div class="back-home">
+            <form action="{% url 'home' %}">
+                <button type="submit">Go home</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
