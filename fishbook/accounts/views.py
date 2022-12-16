@@ -168,7 +168,6 @@ class EditProfileView(views.UpdateView):
     model = Profile
     fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
 
-
     def get_success_url(self):
         return self.success_url or redirect('home')
 

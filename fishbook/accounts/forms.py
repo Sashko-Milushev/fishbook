@@ -40,48 +40,29 @@ class ProfileBaseForm(forms.ModelForm):
         model = Profile
         fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
 
-    def __init__(self, *args, **kwargs):
-        super(ProfileBaseForm, self).__init__(*args, **kwargs)
-        self.fields['username'].widget = forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Username'})
-
     def clean(self):
         super().clean()
         username = self.cleaned_data.get('username')
         profile_type = self.cleaned_data.get('profile_type')
         profile_picture = self.cleaned_data.get('profile_picture')
         fishing_style = self.cleaned_data.get('fishing_style')
-        if not username or not profile_type or not profile_picture or not fishing_style:
-            message = 'Please fill the whole form.'
+        message = 'Please fill the whole form.'
+        if not username:
             self.add_error('username', message)
+        if not profile_type:
             self.add_error('profile_type', message)
+        if not profile_picture:
             self.add_error('profile_picture', message)
+        if not fishing_style:
             self.add_error('fishing_style', message)
 
 
 class ProfileCreateForm(ProfileBaseForm):
-    class Meta:
-        model = Profile
-        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
+    pass
 
 
 class ProfileEditForm(ProfileBaseForm):
-    class Meta:
-        model = Profile
-        fields = ('username', 'profile_type', 'profile_picture', 'fishing_style',)
-
-    def clean(self):
-        super().clean()
-        username = self.cleaned_data.get('username')
-        profile_type = self.cleaned_data.get('profile_type')
-        profile_picture = self.cleaned_data.get('profile_picture')
-        fishing_style = self.cleaned_data.get('fishing_style')
-        if not username or not profile_type or not profile_picture or not fishing_style:
-            message = 'Please fill the whole form.'
-            self.add_error('username', message)
-            self.add_error('profile_type', message)
-            self.add_error('profile_picture', message)
-            self.add_error('fishing_style', message)
+    pass
 
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):
