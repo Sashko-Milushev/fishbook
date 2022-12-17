@@ -8,17 +8,17 @@ services:
     volumes:
       - ./staticfiles:/tmp/fishbook/staticfiles
     ports:
-      - "8000:8000"
+      - 8000:8000
     env_file:
       - ./envs/.env
     depends_on:
       - postgres
   postgres:
-    image: postgres:latest
+    image: postgres
     hostname: postgres
     restart: always
     ports:
-      - "5432:5432"
+      - 5432:5432
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: postgres-user
@@ -29,8 +29,8 @@ services:
   nginx:
     image: nginx
     ports:
-      - "81:80"
-      - "443:443"
+      - 80:80
+      - 443:443
     volumes:
       - ./staticfiles:/home/app/web/staticfiles
       - ./nginx/conf.d:/etc/nginx/conf.d
