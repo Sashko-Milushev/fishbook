@@ -1,12 +1,12 @@
 {% extends 'base/base-lake.html' %}
 {% block page_content %}
 <div class="lake-container">
-        <h4>Private lakes</h4>
+        <h2>Private lakes</h2>
         <div>
             {% for lake in private_lakes %}
                 <div class="lake-card">
                     <img class="lake-img" src="{{ lake.photo.url }}" alt="{{ lake.name }} photo">
-                    <p>{{ lake.name }}</p>
+                    <h3>{{ lake.name }}</h3>
                     <form action="{% url 'details private lake' pk=lake.pk %}">
                         <input type="submit" value="See details"/>
                     </form>

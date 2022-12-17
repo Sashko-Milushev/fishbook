@@ -4,8 +4,8 @@
     <div class="lake-card-details parent">
         <div class="lake-card-child child">
             <img class="lake-img" src="{{ publiclake.photo.url }}" alt="{{ publiclake.name }} photo">
-            <p>Public Lake {{ publiclake.name }}</p>
-            <p>Region {{ publiclake.region }}</p>
+            <h4>Public Lake {{ publiclake.name }}</h4>
+            <p>{{ publiclake.region }} region</p>
             {% if publiclake.address %}
                 <p>{{ publiclake.address }}</p>
             {% endif %}
@@ -16,10 +16,10 @@
             </form>
         </div>
         <div class="lakeDetails child">
-            <p>In {{ publiclake.name }} you can catch:</p>
+            <h3>Fish you can catch in {{ publiclake.name }} lake:</h3>
             {% for fish in publiclake.fish.all %}
                 <a href="{% url 'fish details' pk=fish.pk %}" target="_blank" rel="noopener norefferer">
-                    <p><img class="lake-fish-image" src="{{ fish.fish_picture }}" alt="{{ fish.name }}img">{{ fish.name }}</p></a>
+                    <h4><img class="lake-fish-image" src="{{ fish.fish_picture }}" alt="{{ fish.name }}img">{{ fish.name }}</h4></a>
             {% endfor %}
         </div>
 
