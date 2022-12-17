@@ -34,7 +34,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'fishbook.accounts.middleware.check_profile_completion',
+    # 'fishbook.accounts.middleware.check_profile_completion',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
