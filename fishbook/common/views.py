@@ -15,7 +15,7 @@ class HomeView(views.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        photos = Photo.objects.all()
+        photos = Photo.objects.all().order_by('-publication_date')
         user = self.request.user
         if photos:
             photos = [apply_likes_count(photo) for photo in photos]

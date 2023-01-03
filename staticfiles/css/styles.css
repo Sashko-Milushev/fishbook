@@ -103,6 +103,7 @@ li a .dropbtn {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .fiveoo {
     background-image: url("../images/500.jpg");
     height: 1200px;
@@ -400,4 +401,18 @@ img {
     margin: 11px;
     border-radius: 5%;
 
+}
+
+.no-posts {
+    margin: auto;
+    width: 50%;
+
+    padding: 10px;
+}
+.no-posts img {
+    width: 100%;
+}
+.no-posts h3 {
+    text-align: center;
+    font-family: Georgia;
 }

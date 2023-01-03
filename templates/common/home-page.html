@@ -1,28 +1,29 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    {% for photo in photos %}
-        <div class="post">
-            <div class="userDetails">
-                <a href="{% url 'details profile' pk=photo.user.id %}">
-                    <div class="profileImg">
-                        <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
-                    </div>
-                </a>
-                <h4 class="userName">
+    {% if photos %}
+        {% for photo in photos %}
+            <div class="post">
+                <div class="userDetails">
                     <a href="{% url 'details profile' pk=photo.user.id %}">
-                        {{ photo.user.profile.username }}
+                        <div class="profileImg">
+                            <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
+                        </div>
                     </a>
-                    <br>
-                    {% if photo.location %}
-                        <span>{{ photo.location }}</span>
-                    {% endif %}
-                </h4>
-            </div>
-            <div class="imgBox">
-                <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
-            </div>
-            <div class="actionBtn">
-                <div class="left">
+                    <h4 class="userName">
+                        <a href="{% url 'details profile' pk=photo.user.id %}">
+                            {{ photo.user.profile.username }}
+                        </a>
+                        <br>
+                        {% if photo.location %}
+                            <span>{{ photo.location }}</span>
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="imgBox">
+                    <img src="media/{{ photo.photo }}" alt="photo post" class="photoPost">
+                </div>
+                <div class="actionBtn">
+                    <div class="left">
             <span class="heart">
                 <a href="{% url 'like photo' photo_id=photo.pk %}">
                     {% if photo.is_liked_by_user %}
@@ -67,40 +68,43 @@
                     {% endif %}
                 </a>
             </span>
-                </div>
-
-            </div>
-            <p class="likes">{{ photo.likes_count }} likes</p>
-            {% for fish in photo.tagged_fish.all %}
-                <p class="fishType"># {{ fish.name }}</p>
-            {% endfor %}
-
-            <h3 class="postTime">{{ photo.publication_date }} --- <a href="{% url 'details photo' pk=photo.pk %}">see
-                details</a></h3>
-
-            {% for comment in photo.photocomment_set.all %}
-                <div class="comments">
-                    <div class="userDetails">
-                        <a href="{% url 'details profile' pk=photo.user.id %}">
-                            <div class="profileImg">
-                                <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
-                            </div>
-                            <p>{{ photo.user.profile.username }}:</p>
-                        </a>
-                        <div class="comment-data">
-                            {{ comment.text }} {{ comment.publication }}
-                        </div>
-
                     </div>
+
                 </div>
-            {% endfor %}
-            <div class="addComment">
-                <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
-                    {{ comment_form }}
-                    <button type="submit">Post</button>
-                    {% csrf_token %}
-                </form>
+                <p class="likes">{{ photo.likes_count }} likes</p>
+                {% for fish in photo.tagged_fish.all %}
+                    <p class="fishType"># {{ fish.name }}</p>
+                {% endfor %}
+
+                <h3 class="postTime">{{ photo.publication_date }} --- <a href="{% url 'details photo' pk=photo.pk %}">see
+                    details</a></h3>
+
+                {% for comment in photo.photocomment_set.all %}
+                    <div class="comments">
+                        <div class="userDetails">
+                            <a href="{% url 'details profile' pk=photo.user.id %}">
+                                <div class="profileImg">
+                                    <img src="{{ photo.user.profile.profile_picture.url }}" alt="profile img">
+                                </div>
+                                <p>{{ photo.user.profile.username }}:</p>
+                            </a>
+                            <div class="comment-data">
+                                {{ comment.text }} {{ comment.publication }}
+                            </div>
+
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="addComment">
+                    <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
+                        {{ comment_form }}
+                        <button type="submit">Post</button>
+                        {% csrf_token %}
+                    </form>
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        {% include 'base/partials/no-posts-yet-element.html' %}
+    {% endif %}
 {% endblock %}
