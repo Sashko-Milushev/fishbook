@@ -1,16 +1,17 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
-    {% for fish in page_obj %}
-        <div class="fish-card">
-            <img class="fish-img" src="{{ fish.fish_picture }}" alt="image of {{ fish.name }}" style="width:100%">
-            <h1>{{ fish.name }}</h1>
-            <p class="fish-type">{{ fish.type| capfirst }} fish</p>
-            <form action="{% url 'fish details' pk=fish.pk %}">
-                <input type="submit" value="See details"/>
-            </form>
-        </div>
-    {% endfor %}
-    <div class="paginator">
+    {% if page_obj %}
+        {% for fish in page_obj %}
+            <div class="fish-card">
+                <img class="fish-img" src="{{ fish.fish_picture }}" alt="image of {{ fish.name }}" style="width:100%">
+                <h1>{{ fish.name }}</h1>
+                <p class="fish-type">{{ fish.type| capfirst }} fish</p>
+                <form action="{% url 'fish details' pk=fish.pk %}">
+                    <input type="submit" value="See details"/>
+                </form>
+            </div>
+        {% endfor %}
+        <div class="paginator">
         <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>
@@ -26,5 +27,8 @@
                 <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
-    </div>
+        </div>
+    {% else %}
+        {% include 'base/partials/no-fish-yet.html' %}
+    {% endif %}
 {% endblock %}

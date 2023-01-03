@@ -1,5 +1,6 @@
 {% load static %}
 <div class="no-posts">
     <img src="{% static 'images/no-posts-yet.jpg' %}" alt="empty-fish-tank">
-    <h3>No posts yet. Go fishing!</h3>
+    <h3>No posts yet. Go fishing! Visit our <a href="{% url 'register user' %}">Register page</a>
+        or <a href="{% url 'login user' %}">Login</a></h3></h3>
 </div>

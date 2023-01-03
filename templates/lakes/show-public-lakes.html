@@ -3,17 +3,19 @@
     <div class="lake-container">
         <h2>Public lakes</h2>
         <div>
-            {% for lake in page_obj %}
-                <div class="lake-card">
-                    <img class="lake-img" src="{{ lake.photo.url }}" alt="{{ lake.name }} photo">
-                    <h3 class="lake-name">{{ lake.name }}</h3>
-                    <form action="{% url 'details public lake' pk=lake.pk %}">
-                        <input type="submit" value="See details"/>
-                    </form>
+            {% if page_obj %}
+                {% for lake in page_obj %}
+                    <div class="lake-card">
+                        <img class="lake-img" src="{{ lake.photo.url }}" alt="{{ lake.name }} photo">
+                        <h3 class="lake-name">{{ lake.name }}</h3>
+                        <form action="{% url 'details public lake' pk=lake.pk %}">
+                            <input type="submit" value="See details"/>
+                        </form>
+                    </div>
+                {% endfor %}
+
                 </div>
-            {% endfor %}
-        </div>
-        <div class="paginator">
+                <div class="paginator">
         <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>
@@ -29,6 +31,9 @@
                 <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
-        </div>
-    </div>
+                </div>
+                </div>
+            {% else %}
+                {% include 'base/partials/no-lakes-yet.html' %}
+            {% endif %}
 {% endblock %}
