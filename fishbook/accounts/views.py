@@ -84,6 +84,8 @@ def change_password(request, pk):
     context = {
         'form': form,
         'user': user,
+        'is_owner': request.user == user,
+        'user_pk': request.user.pk
 
     }
 
