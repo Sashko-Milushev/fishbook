@@ -6,6 +6,8 @@ from django.db import models
 from fishbook.core.model_mixins import ChoicesEnumMixin
 from fishbook.fish.models import Fish
 from fishbook.photos.validators import validate_image
+from cloudinary.models import CloudinaryField
+
 
 UserModel = get_user_model()
 
@@ -27,8 +29,8 @@ class Photo(models.Model):
 
     MAX_LOCATION_LENGTH = 30
 
-    photo = models.ImageField(
-        upload_to='photos/',
+    photo = CloudinaryField(
+        folder='photos/',
         blank=False,
         null=False,
         validators=(

@@ -3,6 +3,7 @@ from django.db import models
 
 from fishbook.fish.models import Fish
 from fishbook.photos.validators import validate_image
+from cloudinary.models import CloudinaryField
 
 UserModel = get_user_model()
 
@@ -19,14 +20,11 @@ class PublicLake(models.Model):
         blank=False,
         null=False,
     )
-    photo = models.ImageField(
+    photo = CloudinaryField(
         verbose_name='Lake Photo',
-        upload_to='lake_pictures/',
+        folder='lake_pictures/',
         blank=False,
         null=True,
-        validators=(
-            validate_image,
-        )
     )
     fish = models.ManyToManyField(
         Fish,

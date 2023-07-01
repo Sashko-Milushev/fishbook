@@ -1,11 +1,13 @@
 from enum import Enum
 
 from django.core import validators
+
 from django.db import models
 from django.contrib.auth import models as auth_models
 
+
 from fishbook.accounts.managers import AppUserManager
-from fishbook.accounts.validators import validate_image
+
 from fishbook.core.model_mixins import StrFromFieldMixin, ChoicesEnumMixin
 
 from cloudinary.models import CloudinaryField
@@ -56,9 +58,7 @@ class Profile(StrFromFieldMixin, models.Model):
         folder='profile_pictures/',
         blank=True,
         null=True,
-        validators=(
-            validate_image,
-        ),
+
     )
 
     username = models.CharField(
@@ -95,4 +95,3 @@ class Profile(StrFromFieldMixin, models.Model):
         blank=True,
         null=True,
     )
-

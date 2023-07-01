@@ -11,7 +11,7 @@ def check_profile_completion(get_response):
             return response
         profile = request.user.profile
 
-        if profile.profile_type is not None and profile.profile_picture.name != '' \
+        if profile.profile_type is not None and profile.profile_picture is not None \
                 and profile.username is not None and profile.fishing_style != []:
             profile.is_completed = True
             profile.save()
