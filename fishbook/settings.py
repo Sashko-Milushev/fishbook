@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import mimetypes
+import cloudinary
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -117,3 +118,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.AppUser'
 
 LOGIN_URL = reverse_lazy('login user')
+
+cloudinary.config(
+    cloud_name=config('CLOUD_NAME'),
+    api_key=config('CLOUD_API_KEY'),
+    api_secret=config('CLOUD_API_SECRET_KEY')
+)

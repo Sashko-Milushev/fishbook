@@ -8,6 +8,8 @@ from fishbook.accounts.managers import AppUserManager
 from fishbook.accounts.validators import validate_image
 from fishbook.core.model_mixins import StrFromFieldMixin, ChoicesEnumMixin
 
+from cloudinary.models import CloudinaryField
+
 
 class AppUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     email = models.EmailField(
@@ -50,8 +52,8 @@ class Profile(StrFromFieldMixin, models.Model):
     USERNAME_MAX_LENGTH = 30
     USERNAME_MIN_LENGTH = 2
 
-    profile_picture = models.ImageField(
-        upload_to='profile_pictures/',
+    profile_picture = CloudinaryField(
+        folder='profile_pictures/',
         blank=True,
         null=True,
         validators=(
