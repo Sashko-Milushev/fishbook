@@ -73,14 +73,12 @@ class PrivateLake(models.Model):
         blank=False,
         null=False,
     )
-    photo = models.ImageField(
+    photo = CloudinaryField(
         verbose_name='Lake Photo',
-        upload_to='lake_pictures/',
+        folder='lake_pictures/',
         blank=False,
         null=True,
-        validators=(
-            validate_image,
-        )
+
     )
     fish = models.ManyToManyField(
         Fish,
