@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from fishbook.fish.models import Fish
-from fishbook.photos.validators import validate_image
+
 from cloudinary.models import CloudinaryField
 
 UserModel = get_user_model()

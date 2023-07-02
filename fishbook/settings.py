@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'fishbook.fish',
     'fishbook.photos',
     'fishbook.lakes',
+    'fishbook.weather',
 
 ]
 
