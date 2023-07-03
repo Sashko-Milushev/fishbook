@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+    {% if current_weather_data %}
+        <h2>Current Weather in {{ current_weather_data.city }}</h2>
+        <p>Description: {{ current_weather_data.description }}</p>
+        <p>Temperature: {{ current_weather_data.temperature }}°C</p>
+        <!-- Display other current weather information as desired -->
+    {% else %}
+        <p>Please enter a city to search for weather information.</p>
+    {% endif %}
+
+    {% if forecast_data %}
+    <h2>5-Day Forecast</h2>
+    <ul>
+      {% for forecast in forecast_data %}
+        <li>
+          <p>Date & Time: {{ forecast.datetime }}</p>
+          <p>Description: {{ forecast.description }}</p>
+          <p>Temperature: {{ forecast.temperature }}°C</p>
+          <!-- Display other forecast weather information as desired -->
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
