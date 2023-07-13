@@ -3,28 +3,69 @@
     {% if error_message %}
         <p>{{ error_message }}</p>
     {% endif %}
+    <style>
+        .weather {
+            display: flex;
+            align-items: center;
+        }
 
-    {% if current_weather_data %}
-        <h2>Current Weather in {{ current_weather_data.city }}</h2>
-        <p>Description: {{ current_weather_data.description }}</p>
-        <p>Temperature: {{ current_weather_data.temperature }}°C</p>
-        <!-- Display other current weather information as desired -->
-    {% else %}
-        <p>Please enter a city to search for weather information.</p>
-    {% endif %}
+        .info {
+            flex-grow: 1;
+        }
 
-    {% if forecast_data %}
-    <h2>5-Day Forecast</h2>
-    <ul>
-      {% for forecast in forecast_data %}
-        <li>
-          <p>Date & Time: {{ forecast.datetime }}</p>
-          <p>Description: {{ forecast.description }}</p>
-          <p>Temperature: {{ forecast.temperature }}°C</p>
-          <!-- Display other forecast weather information as desired -->
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
+        .icon img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <div class="weather">
+        {% if current_weather_data %}
+            <div class="weather-info">
+                <h2>Current Weather in {{ current_weather_data.city }}</h2>
+                <p>Description: {{ current_weather_data.description }}</p>
+                <p>Temperature: {{ current_weather_data.temperature }}°C</p>
+                <p>Feels Like: {{ current_weather_data.feels_like }}°C</p>
+                <p>Wind Speed: {{ current_weather_data.wind_speed }} m/s</p>
+                <p>Humidity: {{ current_weather_data.humidity }}%</p>
+                <p>Precipitation: {{ current_weather_data.precipitation }} mm</p>
+                <p>Pressure: {{ current_weather_data.pressure }} hPa</p>
+            </div>
+            <div class="icon">
+                <img src="https://openweathermap.org/img/wn/{{ current_weather_data.icon }}@2x.png" alt="Weather Icon">
+            </div>
+        {% else %}
+            <p>Please enter a city to search for weather information.</p>
+        {% endif %}
+    </div>
+
+
+
+    <div class="weather">
+        {% if forecast_data %}
+            <h2>5-Day Forecast</h2>
+            {% for forecast in forecast_data %}
+                <div class="forecast-entry">
+                    <div class="info">
+                        <h3>{{ forecast.datetime|slice:"0:10" }}</h3>
+                        <p>{{ forecast.datetime|slice:"11:16" }}</p>
+                        <p>Description: {{ forecast.description }}</p>
+                        <p>Temperature: {{ forecast.temperature }}°C</p>
+                        <p>Feels Like: {{ forecast.feels_like }}°C</p>
+                        <p>Wind Speed: {{ forecast.wind_speed }} m/s</p>
+                        <p>Humidity: {{ forecast.humidity }}%</p>
+                        <p>Precipitation: {{ forecast.precipitation }} mm</p>
+                        <p>Pressure: {{ forecast.pressure }} hPa</p>
+                    </div>
+                    <div class="icon">
+                        <img src="https://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png" alt="Weather Icon">
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No forecast data available.</p>
+        {% endif %}
+    </div>
+
 
 {% endblock %}

@@ -14,12 +14,13 @@ def get_weather_data_for_searched_city(city_name):
         current_weather_data = {
             'city': city_name,
             'description': current_weather_data['weather'][0]['description'],
+            'icon': current_weather_data['weather'][0]['icon'],
             'temperature': current_weather_data['main']['temp'],
             'feels_like': current_weather_data['main']['feels_like'],
             'wind_speed': current_weather_data['wind']['speed'],
             'humidity': current_weather_data['main']['humidity'],
             'precipitation': current_weather_data.get('rain', {}).get('1h', 0),
-            'pressure': current_weather_data['main']['pressure']
+            'pressure': current_weather_data['main']['pressure'],
         }
 
         return current_weather_data
@@ -40,12 +41,13 @@ def get_forecast_data_for_searched_city(city_name):
                 'city': city_name,
                 'datetime': forecast['dt_txt'],
                 'description': forecast['weather'][0]['description'],
+                'icon': forecast['weather'][0]['icon'],
                 'temperature': forecast['main']['temp'],
                 'feels_like': forecast['main']['feels_like'],
                 'wind_speed': forecast['wind']['speed'],
                 'humidity': forecast['main']['humidity'],
                 'precipitation': forecast.get('rain', {}).get('3h', 0),
-                'pressure': forecast['main']['pressure']
+                'pressure': forecast['main']['pressure'],
             }
             forecast_data.append(forecast_entry)
 
