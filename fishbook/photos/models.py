@@ -33,9 +33,7 @@ class Photo(models.Model):
         folder='photos/',
         blank=False,
         null=False,
-        validators=(
-            validate_image,
-        ),
+
     )
 
     description = models.CharField(
